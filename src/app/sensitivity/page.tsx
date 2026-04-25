@@ -82,7 +82,7 @@ export default function SensitivityPage() {
 
   const SUBTOPIC_META: Record<string, { icon: string; color: string }> = {
     'Mine Life':       { icon: '⏱', color: '#185FA5' },
-    'HEMM & Cost':     { icon: '🚛', color: '#185FA5' },
+    'Heavy Earth-Moving Machinery (HEMM) & Cost':     { icon: '🚛', color: '#185FA5' },
     'Stripping Ratio': { icon: '📐', color: '#185FA5' },
     'Coal Quality':    { icon: '🔬', color: '#534AB7' },
     'Bench & Blast':   { icon: '💥', color: '#185FA5' },
@@ -161,7 +161,7 @@ export default function SensitivityPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
               { label: 'Mine', val: result.mine_name },
-              { label: 'Base MCI', val: result.base_mci.toFixed(1) },
+              { label: 'Base Mine Composite Index (MCI)', val: result.base_mci.toFixed(1) },
               { label: 'Grade', val: `Grade ${result.base_grade}` },
               { label: 'Parameters Tested', val: result.n_params },
             ].map(s => (
@@ -231,7 +231,7 @@ export default function SensitivityPage() {
                   }}
                 >
                   <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                  <XAxis type="number" tick={{ fontSize: 10 }} label={{ value: 'ΔMCI (pts)', position: 'insideBottom', offset: -2, fontSize: 10 }} />
+                  <XAxis type="number" tick={{ fontSize: 10 }} label={{ value: '\u0394Mine Composite Index (MCI) (points)', position: 'insideBottom', offset: -2, fontSize: 10 }} />
                   <YAxis
                     type="category" dataKey="name"
                     width={140}
@@ -275,7 +275,7 @@ export default function SensitivityPage() {
                     const maxSens = subtopicData[0]?.sensitivity ?? 1;
                     const barW = (sensitivity / maxSens) * 100;
                     const baseScore = result?.base_subtopic_scores?.[
-                      st === 'Mine Life' ? 'mine_life' : st === 'HEMM & Cost' ? 'hemm_cost' :
+                      st === 'Mine Life' ? 'mine_life' : st === 'Heavy Earth-Moving Machinery (HEMM) & Cost' ? 'hemm_cost' :
                       st === 'Stripping Ratio' ? 'stripping_ratio' : st === 'Coal Quality' ? 'coal_quality' :
                       st === 'Bench & Blast' ? 'bench_blast' : st === 'Dewatering' ? 'dewatering' :
                       st === 'Infrastructure' ? 'infrastructure' : ''

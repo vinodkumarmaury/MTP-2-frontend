@@ -59,7 +59,8 @@ function MetricRow({
   );
 }
 
-// ── MCIGauge ────────────────────────────────────────────────────────────────
+// ── Mine Composite Index (MCI) Gauge ────────────────────────────────────────────────────────────────────
+
 export function MCIGauge({ mci, grade }: { mci: number; grade: string }) {
   const gs = gradeStyle(grade);
   const r = 60, cx = 80, cy = 80;
@@ -100,16 +101,16 @@ function DimCard({ dimKey, score, contribution, inputs, breakdowns }: {
     const recov = s2n(inputs.recovery_pct);
     const prod  = s2n(inputs.annual_prod_mty);
     metrics.push(
-      <MetricRow key="gcv"   label="GCV (Coal Quality)" val={gcv > 0 ? gcv.toFixed(0) : '—'} unit="kcal/kg"
+      <MetricRow key="gcv"   label="Gross Calorific Value (GCV) (Coal Quality)" val={gcv > 0 ? gcv.toFixed(0) : '—'} unit="kcal/kg"
         sub={gcv>=6700?'Premium coking coal':gcv>=4940?'Grade C/D (Power)':gcv>=3360?'Grade F/G (Low rank)':'—'}
         score={s2n(B.gcv_s)} benchmark="Grade A >6700 · Grade G <3360" />,
-      <MetricRow key="sr"    label="SR Viability" val={srViab > 0 ? `${srViab.toFixed(1)}%` : `OSR ${osr.toFixed(2)}`}
-        sub={besr>0?`OSR ${osr.toFixed(2)} vs BESR ${besr.toFixed(1)} · ${osr<=besr?'Profitable stripping':'⚠ OSR exceeds BESR'}`:undefined}
+      <MetricRow key="sr"    label="Stripping Ratio (SR) Viability" val={srViab > 0 ? `${srViab.toFixed(1)}%` : `Overall Stripping Ratio (OSR) ${osr.toFixed(2)}`}
+        sub={besr>0?`Overall Stripping Ratio (OSR) ${osr.toFixed(2)} vs Break-Even Stripping Ratio (BESR) ${besr.toFixed(1)} · ${osr<=besr?'Profitable stripping':'⚠ OSR exceeds BESR'}`:undefined}
         score={s2n(B.sr_s)} benchmark="SR Viability >40% = excellent; <0% = loss on OB removal" />,
       <MetricRow key="life"  label="Mine Life" val={life > 0 ? `${life.toFixed(0)} yr` : '—'}
         sub={prod>0?`at ${prod.toFixed(1)} MTPA production rate`:undefined}
         score={s2n(B.life_s)} benchmark=">30 yr excellent · 15–30 good · <10 yr marginal" />,
-      <MetricRow key="hemm"  label="HEMM Performance" val={hemm > 0 ? `${hemm.toFixed(0)}%` : '—'}
+      <MetricRow key="hemm"  label="Heavy Earth-Moving Machinery (HEMM) Performance" val={hemm > 0 ? `${hemm.toFixed(0)}%` : '—'}
         sub={`Availability ${s2n(inputs.hemm_availability).toFixed(0)}% · Utilisation ${s2n(inputs.hemm_utilisation).toFixed(0)}% · Fleet balance ${s2n(B.fleet_s).toFixed(0)}/100`}
         score={s2n(B.hemm_s)} benchmark="Avail ≥88% + Util ≥80% = world-class" />,
       <MetricRow key="rec"   label="Coal Recovery" val={recov > 0 ? `${recov.toFixed(1)}%` : '—'}
@@ -123,7 +124,7 @@ function DimCard({ dimKey, score, contribution, inputs, breakdowns }: {
     const sulph = s2n(inputs.sulphur_pct);
     if (ash > 0 || moist > 0) metrics.push(
       <MetricRow key="coal_qual" label="Coal Quality (Ash / Moisture)" val={ash > 0 ? `${ash.toFixed(1)}% ash` : '—'}
-        sub={[moist > 0 ? `Moisture ${moist.toFixed(1)}%` : '', vm > 0 ? `VM ${vm.toFixed(1)}%` : '', sulph > 0 ? `S ${sulph.toFixed(2)}%` : ''].filter(Boolean).join(' · ')}
+        sub={[moist > 0 ? `Moisture ${moist.toFixed(1)}%` : '', vm > 0 ? `Volatile Matter (VM) ${vm.toFixed(1)}%` : '', sulph > 0 ? `Sulphur (S) ${sulph.toFixed(2)}%` : ''].filter(Boolean).join(' · ')}
         score={s2n(B.ash_s)} benchmark="Ash <20% excellent · >40% washery needed · Moisture <8% good" />,
     );
     // Subtopic: Seam Geometry
@@ -132,7 +133,7 @@ function DimCard({ dimKey, score, contribution, inputs, breakdowns }: {
     const dip   = s2n(inputs.seam_dip_deg);
     if (seamT > 0 || dip > 0) metrics.push(
       <MetricRow key="seam_geom" label="Seam Geometry (Dip / Thickness)" val={dip > 0 ? `${dip.toFixed(1)}° dip` : seamT > 0 ? `${seamT.toFixed(1)} m seam` : '—'}
-        sub={seamT > 0 && obT > 0 ? `Seam ${seamT.toFixed(1)} m · OB ${obT.toFixed(1)} m · Net seam fraction ${(seamT/(seamT+obT)*100).toFixed(0)}%` : dip > 0 ? `Seam dip — steeper angles increase slope instability in OC` : undefined}
+        sub={seamT > 0 && obT > 0 ? `Seam ${seamT.toFixed(1)} m · Overburden (OB) ${obT.toFixed(1)} m · Net seam fraction ${(seamT/(seamT+obT)*100).toFixed(0)}%` : dip > 0 ? `Seam dip — steeper angles increase slope instability in OC` : undefined}
         score={s2n(B.seam_geom_s, 60)} benchmark="Dip <5° ideal · <15° acceptable · >20° mechanisation constraints" />,
     );
     // Subtopic: Haul efficiency
@@ -148,8 +149,8 @@ function DimCard({ dimKey, score, contribution, inputs, breakdowns }: {
         score={s2n(B.haul_eff_s, 65)} benchmark="<500 m excellent · <1000 m good · >1500 m investigate conveyor" />,
     );
     if (burden > 0 || ucs > 0) metrics.push(
-      <MetricRow key="blast_des" label="Blast Design (Burden / UCS)" val={burden > 0 ? `B:S = ${burden.toFixed(1)}:${spacing.toFixed(1)} m` : ucs > 0 ? `${ucs.toFixed(0)} MPa UCS` : '—'}
-        sub={ucs > 0 ? `OB rock UCS ${ucs.toFixed(0)} MPa · ${ucs < 50 ? 'Soft — low powder factor' : ucs < 100 ? 'Medium — standard blast' : 'Hard — pre-splitting required'}` : 'Burden:Spacing ratio vs ideal 1:1.25'}
+      <MetricRow key="blast_des" label="Blast Design (Burden / Uniaxial Compressive Strength (UCS))" val={burden > 0 ? `Burden:Spacing (B:S) = ${burden.toFixed(1)}:${spacing.toFixed(1)} m` : ucs > 0 ? `${ucs.toFixed(0)} MPa UCS` : '—'}
+        sub={ucs > 0 ? `Overburden (OB) rock UCS ${ucs.toFixed(0)} MPa · ${ucs < 50 ? 'Soft — low powder factor' : ucs < 100 ? 'Medium — standard blast' : 'Hard — pre-splitting required'}` : 'Burden:Spacing ratio versus ideal 1:1.25'}
         score={s2n(B.blast_s)} benchmark="B:S ratio ~0.8 ideal · UCS <50 MPa easy blasting" />,
     );
   } else if (dimKey === 'economic') {
@@ -160,14 +161,14 @@ function DimCard({ dimKey, score, contribution, inputs, breakdowns }: {
     const pbp  = s2n(inputs.payback_period_yr);
     const de   = s2n(inputs.debt_equity_ratio);
     metrics.push(
-      <MetricRow key="npv"  label="Net Present Value" val={npv > 0 ? `₹${npv.toLocaleString('en-IN')} Cr` : '—'}
-        sub="Discounted cash flow at given WACC" score={s2n(B.npv_s)} benchmark=">₹5000 Cr = excellent; >₹1000 Cr = good" />,
-      <MetricRow key="irr"  label="IRR vs WACC Spread" val={spread !== 0 ? `${spread>0?'+':''}${spread.toFixed(1)} pp` : '—'}
-        sub={`IRR ${irr.toFixed(1)}% − WACC ${wacc.toFixed(1)}% = ${spread.toFixed(1)} pp positive spread`}
+      <MetricRow key="npv"  label="Net Present Value (NPV)" val={npv > 0 ? `₹${npv.toLocaleString('en-IN')} Crore` : '—'}
+        sub="Discounted cash flow at given Weighted Average Cost of Capital (WACC)" score={s2n(B.npv_s)} benchmark=">₹5000 Crore = excellent; >₹1000 Crore = good" />,
+      <MetricRow key="irr"  label="Internal Rate of Return (IRR) versus Weighted Average Cost of Capital (WACC) Spread" val={spread !== 0 ? `${spread>0?'+':''}${spread.toFixed(1)} percentage points` : '—'}
+        sub={`Internal Rate of Return (IRR) ${irr.toFixed(1)}% − Weighted Average Cost of Capital (WACC) ${wacc.toFixed(1)}% = ${spread.toFixed(1)} percentage points positive spread`}
         score={s2n(B.irr_s)} benchmark=">15 pp excellent · >5 pp viable · <0 = WACC not met" />,
       <MetricRow key="pbp"  label="Payback Period" val={pbp > 0 ? `${pbp.toFixed(1)} yr` : '—'}
         sub="Time to recover capital investment" score={s2n(B.pbp_s)} benchmark="<2 yr excellent · <4 yr good · >7 yr high risk" />,
-      <MetricRow key="de"   label="Debt/Equity Ratio" val={de > 0 ? de.toFixed(2) : '—'}
+      <MetricRow key="de"   label="Debt-to-Equity (D/E) Ratio" val={de > 0 ? de.toFixed(2) : '—'}
         sub={de > 0 ? (de<=0.5?'Conservative leverage':de<=1.5?'Moderate leverage':'High leverage') : undefined}
         score={s2n(B.de_s ?? (de > 0 ? Math.max(0, 100 - de * 50) : 70))}
         benchmark="<0.5 = conservative · >2.0 = over-leveraged" />,
@@ -175,7 +176,7 @@ function DimCard({ dimKey, score, contribution, inputs, breakdowns }: {
     // Subtopic: OB Mining Cost
     const obCost = s2n(inputs.ob_mining_cost);
     if (obCost > 0) metrics.push(
-      <MetricRow key="ob_cost" label="OB Mining Cost" val={`₹${obCost.toFixed(0)} / BCM`}
+      <MetricRow key="ob_cost" label="Overburden (OB) Mining Cost" val={`₹${obCost.toFixed(0)} / Bank Cubic Meter (BCM)`}
         sub={obCost < 80 ? 'Low-cost OB removal — competitive OPEX' : obCost < 150 ? 'Moderate — review HEMM efficiency' : 'High-cost — redesign bench/blast or renegotiate contract'}
         score={s2n(B.obcost_s, 60)} benchmark="<₹80/BCM excellent · <₹150 acceptable · >₹200 uncompetitive" />,
     );
@@ -191,14 +192,14 @@ function DimCard({ dimKey, score, contribution, inputs, breakdowns }: {
         sub="Environmental Clearance + Forest Clearance under EIA/FCA"
         score={s2n(B.ec) * 0.65 + s2n(B.fc) * 0.35}
         benchmark="Both Granted = 100 · Any Pending = high project risk" />,
-      <MetricRow key="ghg"  label="GHG Intensity" val={ghg > 0 ? `${ghg.toFixed(3)} tCO₂/t` : '—'}
-        sub={`Scope 1: ${s2n(inputs.ghg_scope1_tco2yr).toLocaleString('en-IN')} t/yr · Scope 2: ${s2n(inputs.ghg_scope2_tco2yr).toLocaleString('en-IN')} t/yr`}
+      <MetricRow key="ghg"  label="Greenhouse Gas (GHG) Intensity" val={ghg > 0 ? `${ghg.toFixed(3)} tCO₂/tonne` : '—'}
+        sub={`Scope 1: ${s2n(inputs.ghg_scope1_tco2yr).toLocaleString('en-IN')} tonnes/year · Scope 2: ${s2n(inputs.ghg_scope2_tco2yr).toLocaleString('en-IN')} tonnes/year`}
         score={s2n(B.ghg_s)} benchmark="<0.04 tCO₂/t excellent · >0.08 investigate diesel usage" />,
-      <MetricRow key="pm10" label="PM10 Ambient" val={pm10 > 0 ? `${pm10.toFixed(0)} μg/m³` : '—'}
-        sub="CPCB limit: 100 μg/m³ (24hr avg)" score={s2n(B.pm10_s)}
+      <MetricRow key="pm10" label="Particulate Matter 10 micrometers (PM10) Ambient" val={pm10 > 0 ? `${pm10.toFixed(0)} µg/m³` : '—'}
+        sub="Central Pollution Control Board (CPCB) limit: 100 µg/m³ (24 hour average)" score={s2n(B.pm10_s)}
         benchmark="<60 excellent · 60–100 acceptable · >100 violation risk" />,
       <MetricRow key="dew"  label="Dewatering Safety" val={dr > 0 ? `${dr.toFixed(2)}× ratio` : '—'}
-        sub={pump>0&&flow>0?`Pump ${pump.toFixed(0)} m³/hr vs Inflow ${flow.toFixed(0)} m³/hr`:`OB dump FoS: ${s2n(inputs.ob_dump_fos).toFixed(2)}`}
+        sub={pump>0&&flow>0?`Pump ${pump.toFixed(0)} m³/hour versus Inflow ${flow.toFixed(0)} m³/hour`:`Overburden (OB) dump Factor of Safety (FoS): ${s2n(inputs.ob_dump_fos).toFixed(2)}`}
         score={s2n(B.dewat_s)} benchmark="Pump/Inflow ≥1.5 = safe · <0.8 = critical flood risk" />,
     );
     // Subtopic: Sulphur / SO2 Risk
@@ -226,7 +227,7 @@ function DimCard({ dimKey, score, contribution, inputs, breakdowns }: {
     const locEmp = s2n(inputs.local_employment_pct);
     const women  = s2n(inputs.women_employment_pct);
     metrics.push(
-      <MetricRow key="ltifr" label="LTIFR" val={ltifr > 0 ? ltifr.toFixed(1) : '—'}
+      <MetricRow key="ltifr" label="Lost Time Injury Frequency Rate (LTIFR)" val={ltifr > 0 ? ltifr.toFixed(1) : '—'}
         sub="Lost Time Injury Frequency Rate per million man-hours"
         score={s2n(B.ltifr_s)} benchmark="<4 excellent · 4–8 acceptable · >12 critical (India OC avg: 6–10)" />,
       <MetricRow key="far"   label="FAR" val={far > 0 ? far.toFixed(1) : '—'}
@@ -308,10 +309,10 @@ function DimCard({ dimKey, score, contribution, inputs, breakdowns }: {
     const nearM   = s2n(inputs.near_miss_count_annual);
     metrics.push(
       <MetricRow key="fos"  label="Slope Stability (FoS)" val={fosMean > 0 ? `${fosMean.toFixed(2)} ± ${fosSd > 0 ? fosSd.toFixed(2) : '—'}` : '—'}
-        sub={beta !== 0 ? `β = ${beta.toFixed(2)} (Hasofer-Lind) · POF ${pof.toFixed(1)}% · ${beta>=3?'Very safe':beta>=2?'Acceptable':beta>=1.5?'Marginal':'Critical review needed'}` : `POF: ${pof.toFixed(1)}%`}
+        sub={beta !== 0 ? `β = ${beta.toFixed(2)} (Hasofer-Lind) · Probability of Failure (POF) ${pof.toFixed(1)}% · ${beta>=3?'Very safe':beta>=2?'Acceptable':beta>=1.5?'Marginal':'Critical review needed'}` : `Probability of Failure (POF): ${pof.toFixed(1)}%`}
         score={100 - s2n(B.fos_r)} benchmark="β ≥ 3.0 very safe · β 2–3 acceptable · β < 1.5 critical" />,
       <MetricRow key="cpt"  label="Spontaneous Combustion" val={cpt > 0 ? `CPT ${cpt.toFixed(0)}°C` : '—'}
-        sub={cpt >= 175 ? 'Fire-safe coal (CPT ≥175°C)' : cpt >= 140 ? 'Moderate risk — monitoring required' : 'High fire risk — preventive measures critical'}
+        sub={cpt >= 175 ? 'Fire-safe coal (Crossing Point Temperature ≥175°C)' : cpt >= 140 ? 'Moderate risk — monitoring required' : 'High fire risk — preventive measures critical'}
         score={100 - s2n(B.cpt_r)} benchmark="CPT >175°C = safe · <140°C = high fire risk" />,
       <MetricRow key="meth" label="Seam Methane" val={meth > 0 ? `${meth.toFixed(2)} m³/t` : '—'}
         sub={meth < 0.5 ? 'Low methane — standard OC procedures' : meth < 1.5 ? 'Moderate — degasification monitoring' : 'High methane — mandatory degasification'}

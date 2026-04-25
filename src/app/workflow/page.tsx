@@ -6,14 +6,14 @@ export default function WorkflowPage() {
       color: '#2E75B6',
       body: 'User enters 150+ parameters across two modes. Core mode covers 8 sections: Economic, Technical, Geological, Environmental, Social, Geographical, Risk, and Governance. Sub-topic mode covers 7 deep-dive sections: Mine Life, HEMM and Cost, Stripping Ratio, Coal Quality, Bench and Blast Design, Dewatering, and Infrastructure. Default values are pre-loaded from Rajmahal OCP (a validate-split mine with known actual scores).',
       params: [
-        'Economic (18 params): GCV grade, NPV, IRR, CAPEX, coal price, WACC, BESR, D/E ratio, price volatility, export share',
-        'Technical (10 params): OSR, HEMM availability/utilisation, recovery, dilution, highwall FoS, production, mine life, fuel, advance rate',
+        'Economic (18 params): Coal India Limited (CIL) Gross Calorific Value (GCV) grade, Net Present Value (NPV), Internal Rate of Return (IRR), Capital Expenditure (CAPEX), coal price, Weighted Average Cost of Capital (WACC), Break-Even Stripping Ratio (BESR), Debt-to-Equity (D/E) ratio, price volatility, export share',
+        'Technical (10 params): Overall Stripping Ratio (OSR), Heavy Earth-Moving Machinery (HEMM) availability/utilisation, recovery, dilution, highwall Factor of Safety (FoS), production, mine life, fuel, advance rate',
         'Geological (4 params): Reserve (Mt), blended GCV, ash%, seam thickness',
         'Environmental (16 params): EC/FC status, OB dump FoS, GHG intensity, backfill, PM10, water recycling, RE share, reclamation',
         'Social (9 params): LTIFR, FAR, fatalities, local employment, CSR spend, training, women employment, community projects',
         'Geographical (6 params): Rail distance, logistics cost, working days, monsoon disruption, grid availability, power tariff',
         'Risk (13 params): Slope FoS, POF, E[L], CPT, methane, lease years, litigation, near misses, fire incidents, DGMS compliance',
-        'Governance (6 params — NEW): ISO 14001, ISO 45001, regulatory violations, ESG disclosure score, critical audit findings, DGMS compliance',
+        'Governance (6 params — NEW): ISO 14001 Environmental Management System, ISO 45001 Occupational Health and Safety Management System, regulatory violations, Environmental, Social, and Governance (ESG) disclosure score, critical audit findings, Directorate General of Mining Safety (DGMS) compliance',
         'Sub-topic HEMM: shovel bucket, fill factor, swing cycle, output, fleet count, dumper payload, haul distance, speeds, cycle time',
         'Sub-topic Dewatering: hydraulic conductivity, aquifer thickness, water table depth, inflow rate, pump capacity, pumping head',
       ],
@@ -24,8 +24,8 @@ export default function WorkflowPage() {
       color: '#1D9E75',
       body: 'Each dimension is scored 0–100 using analytical formulas. Parameters are normalised against benchmark ranges derived from 12 real Indian OC coal mines. Each dimension has sub-factor weights that sum to 1.0. v3.0 adds Governance as the 7th dimension and redistributes weights.',
       params: [
-        'Technical (v3.0): 0.19×GCV + 0.15×SR + 0.13×Recovery + 0.13×HEMM + 0.11×MineLife + 0.09×FoS + 0.07×Scale + 0.04×Fuel + 0.03×Advance + 0.03×FleetBalance + 0.03×BlastEff',
-        'Economic (v3.0): 0.28×NPV + 0.24×IRR + 0.16×Payback + 0.10×Margin + 0.06×Royalty + 0.05×D/E + 0.04×Closure + 0.04×Volatility + 0.03×ExportPremium',
+        'Technical (v3.0): 0.19×Gross Calorific Value (GCV) + 0.15×Stripping Ratio (SR) + 0.13×Recovery + 0.13×Heavy Earth-Moving Machinery (HEMM) + 0.11×MineLife + 0.09×Factor of Safety (FoS) + 0.07×Scale + 0.04×Fuel + 0.03×Advance + 0.03×FleetBalance + 0.03×BlastEff',
+        'Economic (v3.0): 0.28×Net Present Value (NPV) + 0.24×Internal Rate of Return (IRR) + 0.16×Payback + 0.10×Margin + 0.06×Royalty + 0.05×Debt-to-Equity (D/E) + 0.04×Closure + 0.04×Volatility + 0.03×ExportPremium',
         'Environmental (v3.0): 0.20×EC + 0.11×FC + 0.13×OBdumpFoS + 0.09×GHG + 0.07×Backfill + 0.07×PM10 + 0.06×ClosurePlan + 0.05×WaterRecycling + 0.04×Forest + 0.04×RE + 0.04×Reclamation + 0.04×Topsoil + 0.02×Dewatering',
         'Social (v3.0): 0.24×LTIFR + 0.19×FAR + 0.15×LocalEmp + 0.10×CSR + 0.10×Fatalities + 0.07×Training + 0.07×Women + 0.05×Community + 0.03×ContractorLTIFR',
         'Geographical (v3.0): 0.25×RailDist + 0.25×Logistics + 0.22×WorkingDays + 0.18×PowerAvail + 0.10×PowerTariff',
@@ -39,15 +39,15 @@ export default function WorkflowPage() {
       color: '#534AB7',
       body: 'Dimension weights are derived from three independent mathematical methods combined as an ensemble. This is the core methodological contribution — weights come from data, not from arbitrary expert assumption. All 7 engineering sub-topic sections feed into one or more dimension scores — subtopic parameters directly shift MCI through dimension weights.',
       params: [
-        'AHP (50%): Analytic Hierarchy Process — pairwise comparisons from study of 7 source PDFs. Consistency Ratio = 0.016 (must be < 0.10).',
+        'Analytic Hierarchy Process (AHP) (50%): Expert judgement via pairwise comparisons. Consistency Ratio (CR) = 0.016 (must be < 0.10).',
         'Entropy Weight Method (30%): Shannon 1948 — weight from information diversity across mine data. Higher spread = higher weight.',
         'CRITIC Method (20%): Diakoulaki 1995 — penalises correlated dimensions to avoid double-counting.',
         'Sub-topic ⏱ Mine Life → Technical (mine life 11%, advance rate 3%, production scale 6%)',
-        'Sub-topic 🚛 HEMM & Cost → Technical (HEMM 12%, fleet balance 3%, haul efficiency 3%, fuel 4%) + Economic (OB mining cost 3%)',
-        'Sub-topic 📐 Stripping Ratio → Technical (SR score 14%, seam geometry 3%)',
-        'Sub-topic 🔬 Coal Quality → Technical (GCV 16%, ash/moisture/VM 4%) + Environmental (sulphur 3%) + Risk (CPT/dust 2%)',
+        'Sub-topic 🚛 Heavy Earth-Moving Machinery (HEMM) & Cost → Technical (HEMM 12%, fleet balance 3%, haul efficiency 3%, fuel 4%) + Economic (Overburden (OB) mining cost 3%)',
+        'Sub-topic 📐 Stripping Ratio → Technical (Stripping Ratio score 14%, seam geometry 3%)',
+        'Sub-topic 🔬 Coal Quality → Technical (Gross Calorific Value (GCV) 16%, ash/moisture/volatile matter 4%) + Environmental (sulphur 3%) + Risk (Crossing Point Temperature (CPT)/dust 2%)',
         'Sub-topic 💥 Bench & Blast → Technical (blast efficiency 3%) + Risk (bench height 4%, haul road gradient 2%)',
-        'Sub-topic 💧 Dewatering → Environmental (dewatering 2%, hydro conductivity 2%, pump head 2%, depth-WT 2%) + Risk (inundation 2%)',
+        'Sub-topic 🍧 Dewatering → Environmental (dewatering 2%, hydro conductivity 2%, pump head 2%, depth-water table 2%) + Risk (inundation 2%)',
         'Sub-topic 🏗 Infrastructure → Geographical (rail 22%, logistics 20%, power 16%, despatch 16%, rail tariff 4%, road cost 4%)',
         'All three weight methods independently rank Economic highest and Risk (Safety Quality) as the largest positive weight — convergence validates the ensemble.',
       ],
@@ -58,7 +58,7 @@ export default function WorkflowPage() {
       color: '#1F3864',
       body: 'The seven dimension scores are combined using ensemble weights. Risk is scored as Safety Quality (100 − hazard level) so all weights are positive — a safer mine scores higher. Result is scaled by 0.87 calibration factor and clamped to 0–100.',
       params: [
-        'MCI = 0.127×Technical + 0.170×Economic + 0.101×Environmental + 0.139×Social + 0.130×Geographical + 0.066×Governance + 0.267×Risk(Safety)',
+        'Mine Composite Index (MCI) = 0.127×Technical + 0.170×Economic + 0.101×Environmental + 0.139×Social + 0.130×Geographical + 0.066×Governance + 0.267×Risk(Safety)',
         'Grade A (80–100): Excellent — Investment grade. Proceed with full development.',
         'Grade B (65–79): Good — Viable. Address weakest dimension before capital commitment.',
         'Grade C (50–64): Marginal — High-risk. Sensitivity analysis required. Staged investment.',
@@ -71,8 +71,8 @@ export default function WorkflowPage() {
       color: '#1D9E75',
       body: 'Based on the mine lifecycle stage, CMEM automatically selects the appropriate economic valuation method per the CIMVAL Code (CIM, 2019). The counter-condition — when NOT to use the primary method — is also stated.',
       params: [
-        'Producing stage → DCF / NPV / IRR (Income Approach). Counter: commodity σ > 40% → Scenario DCF at P10/P50/P90.',
-        'Development stage → DCF + Real Options Valuation. Counter: all options contractually committed → Pure DCF ±15%.',
+        'Producing stage → Discounted Cash Flow (DCF) / Net Present Value (NPV) / Internal Rate of Return (IRR) (Income Approach). Counter: commodity σ > 40% → Scenario DCF at P10/P50/P90.',
+        'Development stage → Discounted Cash Flow (DCF) + Real Options Valuation. Counter: all options contractually committed → Pure DCF ±15%.',
         'Exploration stage → EV/Resource Multiple (Market Approach). Counter: no peer comparables → Real Options.',
       ],
     },
@@ -85,7 +85,7 @@ export default function WorkflowPage() {
         'Error < 5 points: Excellent model fit',
         'Error 5–12 points: Acceptable — within expected variance from analytical scoring approximation',
         'Error > 12 points: Investigate — check input parameter values or scoring formula calibration',
-        'Validation mines: Rajmahal OCP (C, 58.4), BCCL N.Karanpura (D, 48.2), Lajkura OCP (C, 62.8)',
+        'Validation mines: Rajmahal Open Cast Pit (Marginal, 58.4), Bharat Coking Coal Limited North Karanpura (High Risk, 48.2), Lajkura Open Cast Pit (Marginal, 62.8)',
       ],
     },
   ];
@@ -97,7 +97,7 @@ export default function WorkflowPage() {
     { dim: 'Social',        w: '+13.9%', why: 'LTIFR range 4–22 across mines = high spread. India mandatory CSR elevates weight. Consistent with v2.', col: '#BA7517' },
     { dim: 'Geographical',  w: '+13.0%', why: 'Rail distance and logistics cost vary significantly across India coal belts. Reduced from 13.9% in v2.', col: '#534AB7' },
     { dim: 'Governance',    w: '+6.6%',  why: 'NEW in v3.0. ISO certification and ESG disclosure vary widely. Lower weight as most Indian mines are at similar (low) maturity. Positive contribution.', col: '#6B48C4' },
-    { dim: 'Risk',          w: '+26.7%', why: 'Safety Quality score = 100 − hazard_level. Higher score = safer mine = positive contribution. Highest weight because safety variance drives the largest MCI spread across mines.', col: '#A32D2D' },
+    { dim: 'Risk',          w: '+26.7%', why: 'Safety Quality score = 100 \u2212 hazard_level. Higher score = safer mine = positive contribution. Highest weight because safety variance drives the largest Mine Composite Index (MCI) spread across mines.', col: '#A32D2D' },
   ];
 
   return (
@@ -154,7 +154,7 @@ export default function WorkflowPage() {
         <div className="mt-4 bg-emerald-50 border border-emerald-200 rounded-xl p-4">
           <div className="font-semibold text-emerald-800 text-sm mb-1">Convergence validation</div>
           <p className="text-sm text-emerald-700 leading-relaxed">
-            All three weight derivation methods (Analytic Hierarchy Process, Entropy Weight Method, CRITIC Method) independently produce the same ordinal ranking: Economic highest, Risk (Safety Quality) as the largest single weight. This convergence across different mathematical approaches validates the weight structure. The AHP Consistency Ratio of 0.016 confirms pairwise comparisons are internally coherent (must be below 0.10). In v3.0, Risk is treated as Safety Quality (100 − hazard level) so it is a positive contribution: safer mine → higher MCI. Governance is added as a dedicated 7th dimension, with its own positive weight of +6.6%.
+            All three weight derivation methods (Analytic Hierarchy Process, Entropy Weight Method, CRITIC Method) independently produce the same ordinal ranking: Economic highest, Risk (Safety Quality) as the largest single weight. This convergence across different mathematical approaches validates the weight structure. The Analytic Hierarchy Process Consistency Ratio of 0.016 confirms pairwise comparisons are internally coherent (must be below 0.10). In v3.0, Risk is treated as Safety Quality (100 \u2212 hazard level) so it is a positive contribution: safer mine \u2192 higher Mine Composite Index (MCI). Governance is added as a dedicated 7th dimension, with its own positive weight of +6.6%.
           </p>
         </div>
       </div>
@@ -163,7 +163,7 @@ export default function WorkflowPage() {
       <div className="bg-[#1F3864] rounded-2xl p-6 text-center">
         <div className="text-blue-200 text-xs mb-2 font-semibold uppercase tracking-widest">Mine Composite Index Formula — v3.0</div>
         <div className="text-white font-mono text-sm md:text-base font-bold leading-relaxed">
-          MCI = 0.127T + 0.170E + 0.101Env + 0.139S + 0.130G + 0.066Gov + 0.267R
+          Mine Composite Index (MCI) = 0.127T + 0.170E + 0.101Env + 0.139S + 0.130G + 0.066Gov + 0.267R
         </div>
         <div className="text-blue-300 text-xs mt-3 leading-relaxed">
           T = Technical · E = Economic · Env = Environmental · S = Social · G = Geographical · Gov = Governance · R = Risk (Safety Quality)

@@ -18,7 +18,7 @@ const DIM_WEIGHT: Record<string, string> = {
 
 const SUBTOPICS = [
   { key: 'mine_life',       label: 'Mine Life',       icon: '⏱', color: '#185FA5', dims: 'Technical' },
-  { key: 'hemm_cost',       label: 'HEMM & Cost',     icon: '🚛', color: '#185FA5', dims: 'Technical + Economic' },
+  { key: 'hemm_cost',       label: 'Heavy Earth-Moving Machinery (HEMM) & Cost',     icon: '🚛', color: '#185FA5', dims: 'Technical + Economic' },
   { key: 'stripping_ratio', label: 'Stripping Ratio', icon: '📐', color: '#185FA5', dims: 'Technical' },
   { key: 'coal_quality',    label: 'Coal Quality',    icon: '🔬', color: '#534AB7', dims: 'Technical + Env + Risk' },
   { key: 'bench_blast',     label: 'Bench & Blast',   icon: '💥', color: '#185FA5', dims: 'Technical + Risk' },

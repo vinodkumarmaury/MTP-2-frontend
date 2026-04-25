@@ -101,7 +101,7 @@ function KeyStatStrip({ mine }: { mine: any }) {
         <span className="font-medium text-slate-700">{sr}</span>
       </span>
       <span className="text-xs text-slate-500">
-        <span className="font-medium text-slate-700">{gcv}</span> GCV
+        <span className="font-medium text-slate-700">{gcv}</span> Gross Calorific Value (GCV)
       </span>
       <span className="text-xs text-slate-400">{mine.location_state ?? '—'}</span>
     </div>
@@ -276,7 +276,7 @@ function MineCard({ mine, result, predicting, onPredict, expanded, onToggle }: {
           {res.results?.subtopic_scores && (() => {
             const SUBTOPICS = [
               { key: 'mine_life',       icon: '⏱', label: 'Mine Life',       color: '#185FA5' },
-              { key: 'hemm_cost',       icon: '🚛', label: 'HEMM & Cost',     color: '#185FA5' },
+              { key: 'hemm_cost',       icon: '🚛', label: 'Heavy Earth-Moving Machinery (HEMM) & Cost',     color: '#185FA5' },
               { key: 'stripping_ratio', icon: '📐', label: 'Stripping Ratio', color: '#185FA5' },
               { key: 'coal_quality',    icon: '🔬', label: 'Coal Quality',    color: '#534AB7' },
               { key: 'bench_blast',     icon: '💥', label: 'Bench & Blast',   color: '#185FA5' },
@@ -440,7 +440,7 @@ export default function DataPage() {
     { label: 'Total Mines',          value: mines.length || 12 },
     { label: 'Training Mines',       value: trainMines.length || 9 },
     { label: 'Validation Mines',     value: validateMines.length || 3 },
-    { label: 'Avg MCI (predicted)',  value: avgMci ?? '—' },
+    { label: 'Average Mine Composite Index (MCI) (predicted)',  value: avgMci ?? '—' },
   ];
 
   return (
