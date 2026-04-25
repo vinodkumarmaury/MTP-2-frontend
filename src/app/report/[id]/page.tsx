@@ -120,7 +120,7 @@ export default function ReportPage({ params }: { params: { id: string } }) {
           <div style={{ fontSize: 10, color: '#93C5FD', display: 'flex', gap: 24, flexWrap: 'wrap' }}>
             <span>Model: CMEM v3.0</span>
             <span>7 Dimensions · 150+ Parameters</span>
-            <span>Weights: AHP + EWM + CRITIC Ensemble</span>
+            <span>Weights: Analytic Hierarchy Process (AHP) + Entropy Weight Method (EWM) + CRITIC Ensemble</span>
             <span>Generated: {now}</span>
           </div>
         </div>
@@ -153,7 +153,7 @@ export default function ReportPage({ params }: { params: { id: string } }) {
                 <div style={{ fontSize: 24, fontWeight: 900, color: '#185FA5', fontFamily: 'monospace' }}>
                   {r.reliability_index_beta.toFixed(2)}
                 </div>
-                <div style={{ fontSize: 9, color: '#64748b' }}>Hasofer-Lind β = (FoS−1)/σ · Safe ≥ 2.0</div>
+                <div style={{ fontSize: 9, color: '#64748b' }}>Hasofer-Lind β = (Factor of Safety (FoS)−1)/σ · Safe ≥ 2.0</div>
               </div>
             )}
             {r.sr_viability_pct !== undefined && (
@@ -162,7 +162,7 @@ export default function ReportPage({ params }: { params: { id: string } }) {
                 <div style={{ fontSize: 24, fontWeight: 900, color: '#1D9E75', fontFamily: 'monospace' }}>
                   {r.sr_viability_pct.toFixed(1)}%
                 </div>
-                <div style={{ fontSize: 9, color: '#64748b' }}>max(0, (BESR−OSR)/BESR×100) · Higher = more margin</div>
+                <div style={{ fontSize: 9, color: '#64748b' }}>max(0, (Break-Even Stripping Ratio (BESR)−Overall Stripping Ratio (OSR))/BESR×100) · Higher = more margin</div>
               </div>
             )}
           </div>
@@ -250,17 +250,17 @@ export default function ReportPage({ params }: { params: { id: string } }) {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '6px 20px', marginBottom: 28 }}>
           {[
-            ['GCV (Coal Quality)',    rec.inputs?.gcv_blended,          'kcal/kg'],
-            ['Operating SR',         rec.inputs?.stripping_ratio_overall, 'BCM:t'],
-            ['Break-Even SR',        rec.inputs?.besr,                  'BCM:t'],
+            ['Gross Calorific Value (GCV) (Coal Quality)',    rec.inputs?.gcv_blended,          'kcal/kg'],
+            ['Operating Stripping Ratio (SR)',         rec.inputs?.stripping_ratio_overall, 'BCM:t'],
+            ['Break-Even Stripping Ratio (BESR)',        rec.inputs?.besr,                  'BCM:t'],
             ['Annual Production',    rec.inputs?.annual_prod_mty,       'MTPA'],
             ['Mine Life',            rec.inputs?.mine_life_yr,          'yr'],
-            ['NPV',                  rec.inputs?.npv_cr ? `₹${rec.inputs.npv_cr}` : '—', 'Cr'],
-            ['IRR',                  rec.inputs?.irr_pct,               '%'],
-            ['LTIFR',                rec.inputs?.ltifr,                 ''],
-            ['Slope FoS',            rec.inputs?.slope_fos_mean,        ''],
-            ['β Reliability Index',  r.reliability_index_beta?.toFixed(2), ''],
-            ['HEMM Availability',    rec.inputs?.hemm_availability,     '%'],
+            ['Net Present Value (NPV)',                  rec.inputs?.npv_cr ? `₹${rec.inputs.npv_cr}` : '—', 'Cr'],
+            ['Internal Rate of Return (IRR)',                  rec.inputs?.irr_pct,               '%'],
+            ['Lost Time Injury Frequency Rate (LTIFR)',                rec.inputs?.ltifr,                 ''],
+            ['Slope Factor of Safety (FoS)',            rec.inputs?.slope_fos_mean,        ''],
+            ['Hasofer-Lind Reliability Index (β)',  r.reliability_index_beta?.toFixed(2), ''],
+            ['Heavy Earth-Moving Machinery (HEMM) Availability',    rec.inputs?.hemm_availability,     '%'],
             ['Rail Distance',        rec.inputs?.rail_dist_km,          'km'],
           ].map(([label, val, unit]) => (
             <div key={label as string} style={{ borderBottom: '1px solid #f1f5f9', padding: '4px 0' }}>
@@ -288,7 +288,7 @@ export default function ReportPage({ params }: { params: { id: string } }) {
             <strong> CRITIC method</strong> (20% weight).
           </p>
           <p style={{ marginBottom: 8 }}>
-            The MCI formula: MCI = 0.170·E + 0.127·T + 0.139·S + 0.130·G + 0.101·Env + 0.066·Gov − 0.267·R
+            The Mine Composite Index (MCI) formula: MCI = 0.170·Economic + 0.127·Technical + 0.139·Social + 0.130·Geographical + 0.101·Environmental + 0.066·Governance − 0.267·Risk
           </p>
           <p>
             Validated against {'{4}'} reference mines with known expert scores. Target: MAE &lt; 5 pts, R² &gt; 0.90.

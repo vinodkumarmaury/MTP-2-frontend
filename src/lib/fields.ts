@@ -43,7 +43,7 @@ export const CORE_SECTIONS: SectionDef[] = [
     {k:'annual_depreciation_cr', label:'Annual Depreciation',         unit:'₹ Crore/yr',      type:'number'},
     {k:'closure_bond_cr',     label:'Mine Closure Bond Provision',    unit:'₹ Crore',         type:'number'},
     {k:'coal_grade',          label:'CIL Coal Grade',                 unit:'',                type:'select', opts:['Grade A','Grade B','Grade C','Grade D','Grade E','Grade F','Grade G']},
-    {k:'debt_equity_ratio',   label:'Debt-to-Equity (D/E) Ratio',     unit:'D/E',             type:'number', help:'Financial leverage — lower is better (0 = all equity)},
+    {k:'debt_equity_ratio',   label:'Debt-to-Equity (D/E) Ratio',     unit:'D/E',             type:'number', help:'Financial leverage — lower is better (0 = all equity)'},
     {k:'coal_price_volatility_pct', label:'Coal Price Volatility',    unit:'% CV',            type:'number', help:'Coefficient of variation of coal price over 3 yrs'},
     {k:'export_revenue_pct',  label:'Export / Spot Revenue Share',    unit:'%',               type:'number', help:'% revenue from spot markets / exports (premium pricing)'},
   ]},
