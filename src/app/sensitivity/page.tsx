@@ -46,9 +46,10 @@ export default function SensitivityPage() {
   const [filterMode, setFilterMode] = useState<'dim' | 'subtopic'>('dim');
 
   useEffect(() => {
-    endpoints.sensitivityMines().then((d: Mine[]) => {
-      setMines(d);
-      if (d.length) setSelMine(d[0].mine_id);
+    endpoints.sensitivityMines().then((d: any) => {
+      const mines: Mine[] = Array.isArray(d) ? d : (Array.isArray(d?.mines) ? d.mines : []);
+      setMines(mines);
+      if (mines.length) setSelMine(mines[0].mine_id);
     }).catch(() => {});
   }, []);
 

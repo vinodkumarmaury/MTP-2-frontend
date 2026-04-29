@@ -22,7 +22,7 @@ export default function HistoryPage() {
 
   async function load() {
     setLoading(true);
-    try { const d = await api.get('/api/history'); setHistory(d); }
+    try { const d = await api.get('/api/history'); setHistory(Array.isArray(d) ? d : (Array.isArray(d?.history) ? d.history : [])); }
     catch(e: any){ setErr(e.message); }
     finally { setLoading(false); }
   }

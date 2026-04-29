@@ -12,22 +12,22 @@ const GRADE_SCALE = [
 
 const FEATURES = [
   { href:'/predict',     icon:'⛏',  label:'Predict',         desc:'8-section form: Economic, Technical, Geological, Environmental, Social, Geographical, Risk + Governance. SVG gauge, radar chart, dimension breakdowns.' },
-  { href:'/compare',     icon:'📊', label:'Compare',         desc:'Scatter plot + residual table: Formula MCI (y_pred) vs actual expert scores (y_true) for 4 validate mines. MAE & R² shown.' },
-  { href:'/sensitivity', icon:'🌪️', label:'Sensitivity',     desc:'Tornado chart: perturb each parameter ±10/20/30% to find which inputs drive MCI most. Dimension-level sensitivity aggregation. OAT method.' },
+  { href:'/compare',     icon:'📊', label:'Compare',         desc:'Scatter plot + residual table: Formula Mine Composite Index (MCI) predicted vs actual expert scores for 4 validate mines. Mean Absolute Error (MAE) & R² shown.' },
+  { href:'/sensitivity', icon:'🌪️', label:'Sensitivity',     desc:'Tornado chart: perturb each parameter ±10/20/30% to find which inputs drive Mine Composite Index (MCI) most. Dimension-level sensitivity aggregation. One-At-a-Time (OAT) method.' },
   { href:'/history',     icon:'📋', label:'History',         desc:'Every prediction saved. Edit parameters (Save), then Re-Evaluate separately to recompute scores. Export PDF report for any record.' },
-  { href:'/parameters',  icon:'📖', label:'Parameters',      desc:'All 150+ parameters documented: definition, relevance to CMEM, formula, and source reference mine.' },
-  { href:'/workflow',    icon:'🔄', label:'Workflow',        desc:'Step-by-step explanation: how 150+ inputs flow through 7 dimension scoring functions → ensemble weights → MCI → Grade.' },
-  { href:'/data',        icon:'🗄', label:'Mine Data',       desc:'12 real Indian OC coal mines (8 train, 4 validate incl. 2 Australian). Click any mine to test-predict; validate mines show actual vs predicted error.' },
+  { href:'/parameters',  icon:'📖', label:'Parameters',      desc:'All 150+ parameters documented: definition, relevance to Composite Mine Evaluation Model (CMEM), formula, and source reference mine.' },
+  { href:'/workflow',    icon:'🔄', label:'Workflow',        desc:'Step-by-step explanation: how 150+ inputs flow through 7 dimension scoring functions → ensemble weights → Mine Composite Index (MCI) → Grade.' },
+  { href:'/data',        icon:'🗄', label:'Mine Data',       desc:'12 real Indian Opencast (OC) coal mines (8 train, 4 validate incl. 2 Australian). Click any mine to test-predict; validate mines show actual vs predicted error.' },
 ];
 
 const DIMS = [
-  { label:'Economic',       weight:'17.0%', color:'text-emerald-700', desc:'NPV, IRR, OPEX, D/E ratio, price volatility' },
-  { label:'Technical',      weight:'12.7%', color:'text-blue-700',    desc:'HEMM, stripping ratio, recovery, fuel efficiency' },
-  { label:'Social',         weight:'13.9%', color:'text-amber-700',   desc:'LTIFR, FAR, local employment, women workforce' },
+  { label:'Economic',       weight:'17.0%', color:'text-emerald-700', desc:'Net Present Value (NPV), Internal Rate of Return (IRR), Operating Expenditure (OPEX), Debt-to-Equity (D/E) ratio, price volatility' },
+  { label:'Technical',      weight:'12.7%', color:'text-blue-700',    desc:'Heavy Earth-Moving Machinery (HEMM), stripping ratio, recovery, fuel efficiency' },
+  { label:'Social',         weight:'13.9%', color:'text-amber-700',   desc:'Lost Time Injury Frequency Rate (LTIFR), Fatal Accident Rate (FAR), local employment, women workforce' },
   { label:'Geographical',   weight:'13.0%', color:'text-violet-700',  desc:'Rail distance, logistics cost, power availability' },
-  { label:'Governance',     weight:'6.6%',  color:'text-purple-700',  desc:'ISO certifications, DGMS compliance, ESG score — NEW' },
-  { label:'Environmental',  weight:'10.1%', color:'text-green-700',   desc:'EC/FC status, GHG intensity, PM10, land reclamation' },
-  { label:'Risk (Safety)',  weight:'+26.7%', color:'text-red-700',     desc:'Safety quality score: slope FoS, near-miss, DGMS compliance (positive contribution)' },
+  { label:'Governance',     weight:'6.6%',  color:'text-purple-700',  desc:'ISO certifications, Directorate General of Mines Safety (DGMS) compliance, Environmental, Social, and Governance (ESG) score — NEW' },
+  { label:'Environmental',  weight:'10.1%', color:'text-green-700',   desc:'Environmental Clearance (EC) / Forest Clearance (FC) status, Greenhouse Gas (GHG) intensity, Particulate Matter 10 micrometers (PM10), land reclamation' },
+  { label:'Risk (Safety)',  weight:'+26.7%', color:'text-red-700',     desc:'Safety quality score: slope Factor of Safety (FoS), near-miss incidents, Directorate General of Mines Safety (DGMS) compliance (positive contribution)' },
 ];
 
 export default function Home() {
@@ -48,13 +48,13 @@ export default function Home() {
         </div>
         <h1 className="text-3xl md:text-4xl font-bold mb-3">Composite Mine Evaluation Model</h1>
         <p className="text-blue-100 text-base leading-relaxed max-w-3xl mb-2">
-          Evaluates Open-Cast coal mines across <strong>7 dimensions</strong> using <strong>150+ parameters</strong>.
-          Weights derived from AHP + Entropy Weight Method + CRITIC ensemble — not expert assumption.
-          Validated against 4 real OC mines (2 Indian NCL + 2 Australian) — MAE 2.5 pts.
+          Evaluates Open-Cast (OC) coal mines across <strong>7 dimensions</strong> using <strong>150+ parameters</strong>.
+          Weights derived from Analytic Hierarchy Process (AHP) + Entropy Weight Method (EWM) + CRITIC ensemble — not expert assumption.
+          Validated against 4 real Opencast (OC) mines (2 Indian NCL + 2 Australian) — Mean Absolute Error (MAE) 2.5 pts.
         </p>
         <p className="text-blue-300 text-sm mb-6">
           v3.0 — adds <span className="text-white font-semibold">Governance</span> as 7th dimension:
-          ISO 14001/45001, DGMS compliance, ESG disclosure score, regulatory violation tracking.
+          ISO 14001/45001, Directorate General of Mines Safety (DGMS) compliance, Environmental, Social, and Governance (ESG) disclosure score, regulatory violation tracking.
         </p>
         <div className="flex flex-wrap gap-3">
           <Link href="/predict"   className="bg-white text-[#1F3864] font-semibold px-5 py-2.5 rounded-xl hover:bg-blue-50 transition text-sm">Predict a Mine →</Link>

@@ -180,7 +180,11 @@ export default function PredictPage() {
 
   useEffect(() => {
     api.get('/api/mines/validate')
-      .then(data => { setValidateMines(data); if (data.length > 0) setCompareMineid(data[0].mine_id); })
+      .then(data => {
+        const mines = Array.isArray(data) ? data : (Array.isArray(data?.mines) ? data.mines : []);
+        setValidateMines(mines);
+        if (mines.length > 0) setCompareMineid(mines[0].mine_id);
+      })
       .catch(() => {});
   }, []);
 

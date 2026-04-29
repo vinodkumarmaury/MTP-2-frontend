@@ -2,6 +2,7 @@
 import {
   RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar,
   ResponsiveContainer, Tooltip,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RTooltip, ReferenceLine, Cell,
 } from 'recharts';
 import { DIM_META, gradeStyle, errColor } from '@/lib/api';
 
@@ -54,6 +55,268 @@ function MetricRow({
           style={{ background: st.bg, color: st.tc }}>
           {st.label}
         </span>
+      </div>
+    </div>
+  );
+}
+
+// ── Dimension Score Bar Chart ─────────────────────────────────────────────────
+function DimBarChart({ scores }: { scores: Record<string, number> }) {
+  const DIM_SHORT: Record<string, string> = {
+    economic: 'Eco', technical: 'Tech', geographical: 'Geo',
+    environmental: 'Env', social: 'Soc', governance: 'Gov', risk: 'Risk',
+  };
+  const data = Object.entries(scores).map(([k, v]) => ({
+    key: k,
+    name: DIM_SHORT[k] ?? k,
+    score: Math.round(v * 10) / 10,
+    color: DIM_META[k]?.color ?? '#888',
+  }));
+
+  return (
+    <div>
+      <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">
+        2b. Dimension Scores — Bar Chart
+      </div>
+      <div className="text-[9px] text-slate-400 mb-3">
+        Dashed lines: Grade B threshold (65) and Grade A threshold (80).
+      </div>
+      <ResponsiveContainer width="100%" height={200}>
+        <BarChart data={data} margin={{ top: 8, right: 16, left: -10, bottom: 0 }} barCategoryGap="30%">
+          <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
+          <XAxis dataKey="name" tick={{ fontSize: 10, fill: '#64748b', fontWeight: 600 }} axisLine={false} tickLine={false} />
+          <YAxis domain={[0, 100]} tick={{ fontSize: 9, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
+          <RTooltip
+            formatter={(value: number, _: string, entry: any) => [
+              `${value.toFixed(1)} / 100`,
+              DIM_META[entry.payload?.key]?.label ?? entry.payload?.key,
+            ]}
+            contentStyle={{ fontSize: 11, borderRadius: 8, border: '1px solid #e2e8f0' }}
+          />
+          <ReferenceLine y={65} stroke="#f59e0b" strokeDasharray="4 3" strokeWidth={1.5}
+            label={{ value: 'Grade B (65)', position: 'insideTopRight', fontSize: 9, fill: '#f59e0b' }} />
+          <ReferenceLine y={80} stroke="#22c55e" strokeDasharray="4 3" strokeWidth={1.5}
+            label={{ value: 'Grade A (80)', position: 'insideTopRight', fontSize: 9, fill: '#22c55e' }} />
+          <Bar dataKey="score" radius={[4, 4, 0, 0]}>
+            {data.map((entry) => (
+              <Cell key={entry.key} fill={entry.color} fillOpacity={0.85} />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
+
+// ── Input Parameter Summary Table ─────────────────────────────────────────────
+function InputSummary({ inputs }: { inputs: Inp }) {
+  const fmt = (v: unknown, decimals = 2): string => {
+    if (v === undefined || v === null || v === '') return '—';
+    const n = parseFloat(String(v));
+    if (isNaN(n) || n === 0) return String(v) !== '0' ? String(v) || '—' : '—';
+    return n % 1 === 0 ? n.toLocaleString('en-IN') : n.toFixed(decimals);
+  };
+
+  type Row = { label: string; val: string; unit?: string };
+  type Group = { title: string; color: string; rows: Row[] };
+
+  const groups: Group[] = [
+    {
+      title: 'Economic', color: '#1D9E75',
+      rows: [
+        { label: 'Net Present Value (NPV)', val: fmt(inputs.npv_cr, 0), unit: '₹ Crore' },
+        { label: 'Internal Rate of Return (IRR)', val: fmt(inputs.irr_pct), unit: '%' },
+        { label: 'Weighted Average Cost of Capital (WACC)', val: fmt(inputs.wacc_pct), unit: '%' },
+        { label: 'Payback Period', val: fmt(inputs.payback_period_yr), unit: 'yr' },
+        { label: 'Break-Even Stripping Ratio (BESR)', val: fmt(inputs.besr), unit: 'BCM:t' },
+      ].filter(r => r.val !== '—'),
+    },
+    {
+      title: 'Technical', color: '#185FA5',
+      rows: [
+        { label: 'Overall Stripping Ratio (OSR)', val: fmt(inputs.stripping_ratio_overall), unit: 'BCM:t' },
+        { label: 'HEMM Availability', val: fmt(inputs.hemm_availability, 1), unit: '%' },
+        { label: 'Annual Production', val: fmt(inputs.annual_prod_mty, 2), unit: 'MTPA' },
+        { label: 'Mine Life', val: fmt(inputs.mine_life_yr, 0), unit: 'yr' },
+        { label: 'Coal Recovery', val: fmt(inputs.recovery_pct, 1), unit: '%' },
+      ].filter(r => r.val !== '—'),
+    },
+    {
+      title: 'Geological', color: '#534AB7',
+      rows: [
+        { label: 'Mineable Reserve', val: fmt(inputs.reserve_mt, 1), unit: 'Mt' },
+        { label: 'Gross Calorific Value (GCV)', val: fmt(inputs.gcv_blended, 0), unit: 'kcal/kg' },
+        { label: 'Ash Content', val: fmt(inputs.ash_pct, 1), unit: '%' },
+        { label: 'Seam Thickness', val: fmt(inputs.seam_thickness_avg_m, 1), unit: 'm' },
+      ].filter(r => r.val !== '—'),
+    },
+    {
+      title: 'Environmental', color: '#3B6D11',
+      rows: [
+        { label: 'EC Status', val: String(inputs.ec_status ?? ''), unit: undefined },
+        { label: 'GHG Intensity', val: fmt(inputs.ghg_intensity, 3), unit: 'tCO₂/t' },
+        { label: 'Ambient PM10', val: fmt(inputs.pm10_ambient_ugm3, 0), unit: 'µg/m³' },
+      ].filter(r => r.val !== '—' && r.val !== ''),
+    },
+    {
+      title: 'Social', color: '#BA7517',
+      rows: [
+        { label: 'Lost Time Injury Frequency Rate (LTIFR)', val: fmt(inputs.ltifr, 1), unit: 'per 10⁶ man-hrs' },
+        { label: 'Fatal Accident Rate (FAR)', val: fmt(inputs.far, 1), unit: 'per 10⁸ man-hrs' },
+        { label: 'Local Employment', val: fmt(inputs.local_employment_pct, 0), unit: '%' },
+      ].filter(r => r.val !== '—'),
+    },
+    {
+      title: 'Risk', color: '#A32D2D',
+      rows: [
+        { label: 'Slope FoS (Mean)', val: fmt(inputs.slope_fos_mean, 2), unit: undefined },
+        { label: 'Probability of Failure (POF)', val: fmt(inputs.prob_of_failure_pct, 1), unit: '%' },
+        { label: 'Crossing Point Temperature (CPT)', val: fmt(inputs.cpt_deg, 0), unit: '°C' },
+      ].filter(r => r.val !== '—'),
+    },
+  ].filter(g => g.rows.length > 0);
+
+  return (
+    <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
+      <div className="px-4 py-2.5 bg-slate-50 border-b border-slate-200">
+        <div className="text-xs font-bold text-slate-600 uppercase tracking-widest">
+          Input Parameters Summary
+        </div>
+        <div className="text-[9px] text-slate-400 mt-0.5">Key input values grouped by dimension</div>
+      </div>
+      <div className="p-4 grid md:grid-cols-2 gap-4">
+        {groups.map(g => (
+          <div key={g.title}>
+            <div className="text-[10px] font-black uppercase tracking-wider mb-1.5 pb-1 border-b"
+              style={{ color: g.color, borderColor: g.color + '30' }}>
+              {g.title}
+            </div>
+            <table className="w-full">
+              <tbody>
+                {g.rows.map(r => (
+                  <tr key={r.label} className="border-b border-slate-50 last:border-0">
+                    <td className="py-0.5 pr-2 text-[9px] text-slate-500 leading-snug">{r.label}</td>
+                    <td className="py-0.5 text-right text-[9px] font-black tabular-nums whitespace-nowrap"
+                      style={{ color: g.color }}>
+                      {r.val}{r.unit ? <span className="font-normal text-slate-400 ml-0.5">{r.unit}</span> : null}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ── Decision Summary Box ──────────────────────────────────────────────────────
+function DecisionSummary({
+  mci, grade, scores,
+}: {
+  mci: number; grade: string; scores: Record<string, number>;
+}) {
+  const gs = gradeStyle(grade);
+
+  const gradeRec: Record<string, string> = {
+    A: 'Strong investment — proceed with full capital commitment.',
+    B: 'Viable project — address weakest dimension before final commitment.',
+    C: 'Marginal case — staged investment with sensitivity analysis required.',
+    D: 'Non-investment grade — remediation plan required before funding.',
+  };
+
+  const nextSteps: Record<string, string> = {
+    A: 'Fast-track board approval and financial close within current quarter.',
+    B: 'Commission targeted improvement plan for lowest-scoring dimension, then re-evaluate.',
+    C: 'Conduct phased feasibility study; revisit full commitment only after reaching Grade B.',
+    D: 'Halt capital deployment; initiate comprehensive remediation and re-assessment.',
+  };
+
+  const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  const strengths = sorted.filter(([, v]) => v >= 70).slice(0, 3);
+  const weaknesses = [...sorted].reverse().slice(0, 3);
+
+  return (
+    <div className="rounded-xl overflow-hidden border-2" style={{ borderColor: gs.bc }}>
+      {/* Header band */}
+      <div className="px-5 py-3 flex items-center gap-4" style={{ background: gs.bg }}>
+        <span className="text-3xl font-black leading-none" style={{ color: gs.tc }}>
+          {mci}
+        </span>
+        <div className="flex-1">
+          <div className="text-[9px] font-bold uppercase tracking-widest mb-0.5" style={{ color: gs.tc, opacity: 0.7 }}>
+            Mine Composite Index — Decision Summary
+          </div>
+          <div className="text-sm font-bold leading-snug" style={{ color: gs.tc }}>
+            {gradeRec[grade] ?? 'Evaluation complete.'}
+          </div>
+        </div>
+        <span className="text-2xl font-black px-4 py-2 rounded-xl border-2 flex-shrink-0"
+          style={{ color: gs.tc, background: gs.bc + '22', borderColor: gs.bc }}>
+          Grade {grade}
+        </span>
+      </div>
+
+      <div className="p-4 bg-white grid md:grid-cols-3 gap-4">
+        {/* Strengths */}
+        <div>
+          <div className="text-[10px] font-black text-emerald-700 uppercase tracking-wider mb-2">
+            Top Strengths
+          </div>
+          {strengths.length > 0 ? (
+            <ul className="space-y-1.5">
+              {strengths.map(([k, v]) => (
+                <li key={k} className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0" />
+                  <span className="text-[10px] text-slate-700 font-semibold">
+                    {DIM_META[k]?.label ?? k}
+                    <span className="ml-1 font-black text-emerald-600">{v.toFixed(0)}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-[9px] text-slate-400 italic">No dimension scored ≥ 70.</p>
+          )}
+        </div>
+
+        {/* Weaknesses */}
+        <div>
+          <div className="text-[10px] font-black text-red-700 uppercase tracking-wider mb-2">
+            Areas to Improve
+          </div>
+          <ul className="space-y-1.5">
+            {weaknesses.map(([k, v]) => (
+              <li key={k} className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0" />
+                <span className="text-[10px] text-slate-700 font-semibold">
+                  {DIM_META[k]?.label ?? k}
+                  <span className="ml-1 font-black text-red-500">{v.toFixed(0)}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Next steps */}
+        <div className="md:border-l md:border-slate-100 md:pl-4">
+          <div className="text-[10px] font-black uppercase tracking-wider mb-2" style={{ color: gs.tc }}>
+            Recommended Next Step
+          </div>
+          <p className="text-[10px] text-slate-600 leading-relaxed">
+            {nextSteps[grade] ?? 'Review all dimensions and re-submit for evaluation.'}
+          </p>
+          <div className="mt-3 flex items-center gap-1.5">
+            <span className="text-[9px] font-bold px-2 py-0.5 rounded-full"
+              style={{ background: gs.bg, color: gs.tc, border: `1px solid ${gs.bc}` }}>
+              MCI = {mci} / 100
+            </span>
+            <span className="text-[9px] text-slate-400">
+              {mci >= 80 ? 'Top quartile' : mci >= 65 ? 'Above average' : mci >= 50 ? 'Below average' : 'Bottom quartile'}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -230,7 +493,7 @@ function DimCard({ dimKey, score, contribution, inputs, breakdowns }: {
       <MetricRow key="ltifr" label="Lost Time Injury Frequency Rate (LTIFR)" val={ltifr > 0 ? ltifr.toFixed(1) : '—'}
         sub="Lost Time Injury Frequency Rate per million man-hours"
         score={s2n(B.ltifr_s)} benchmark="<4 excellent · 4–8 acceptable · >12 critical (India OC avg: 6–10)" />,
-      <MetricRow key="far"   label="FAR" val={far > 0 ? far.toFixed(1) : '—'}
+      <MetricRow key="far"   label="Fatal Accident Rate (FAR)" val={far > 0 ? far.toFixed(1) : '—'}
         sub="Fatal Accident Rate per million man-hours"
         score={s2n(B.far_s)} benchmark="<10 acceptable · >30 critical (national benchmark)" />,
       <MetricRow key="fat"   label="Fatalities / Year" val={fat.toFixed(0)}
@@ -288,10 +551,10 @@ function DimCard({ dimKey, score, contribution, inputs, breakdowns }: {
         sub="Environmental & OH&S Management System certification"
         score={(s2n(B.iso14) + s2n(B.iso45)) / 2}
         benchmark="Both Certified = 100 · In Progress = 55 · Not Started = 10" />,
-      <MetricRow key="dgms"  label="DGMS Compliance" val={dgms > 0 ? `${dgms.toFixed(0)}%` : '—'}
+      <MetricRow key="dgms"  label="Directorate General of Mines Safety (DGMS) Compliance" val={dgms > 0 ? `${dgms.toFixed(0)}%` : '—'}
         sub="Directorate General of Mines Safety audit compliance score"
         score={s2n(B.dgms_s)} benchmark=">90% excellent · <70% regulatory action risk" />,
-      <MetricRow key="esg"   label="ESG Disclosure Score" val={esg > 0 ? `${esg.toFixed(0)} / 100` : '—'}
+      <MetricRow key="esg"   label="Environmental, Social, and Governance (ESG) Disclosure Score" val={esg > 0 ? `${esg.toFixed(0)} / 100` : '—'}
         sub="Transparency: sustainability reporting, GRI/BRSR framework"
         score={s2n(B.esg_s)} benchmark=">70 strong · 40–70 developing · <30 opaque" />,
       <MetricRow key="viol"  label="Regulatory Violations" val={viol.toFixed(0)}
@@ -396,6 +659,10 @@ function SubtopicPanel({ breakdowns, inputs }: {
     technical: '#185FA5', economic: '#1D9E75', environmental: '#3B6D11',
     geographical: '#534AB7', risk: '#A32D2D',
   };
+  const DIM_WEIGHTS: Record<string, string> = {
+    technical: '12.7%', economic: '17.0%', environmental: '10.1%',
+    social: '13.9%', geographical: '13.0%', governance: '6.6%', risk: '26.7%',
+  };
 
   const subtopics = [
     {
@@ -410,13 +677,13 @@ function SubtopicPanel({ breakdowns, inputs }: {
       finding: (sc: number) => sc >= 75 ? 'Long operational horizon — strong investor ROI profile' : sc >= 55 ? 'Adequate mine life — monitor annual production targets' : 'Short mine life — review reserves or reduce production rate',
     },
     {
-      id: 'hemm', icon: '🚛', label: 'HEMM & Cost',
+      id: 'hemm', icon: '🚛', label: 'Heavy Earth-Moving Machinery (HEMM) & Cost',
       dims: ['technical', 'economic'],
       score: 0.40 * s2n(B_T.hemm_s, 65) + 0.25 * s2n(B_T.fleet_s, 65) + 0.20 * s2n(B_T.haul_eff_s, 65) + 0.15 * s2n(B_T.fuel_s, 65),
       keys: [
-        { label: 'HEMM Avail×Util', val: (s2n(inputs.hemm_availability) + s2n(inputs.hemm_utilisation)) / 2, unit: '%' },
-        { label: 'Haul Dist',       val: s2n(inputs.haul_dist_m), unit: 'm' },
-        { label: 'OB Cost',         val: s2n(inputs.ob_mining_cost), unit: '₹/BCM' },
+        { label: 'Heavy Earth-Moving Machinery (HEMM) Avg Avail & Util', val: (s2n(inputs.hemm_availability) + s2n(inputs.hemm_utilisation)) / 2, unit: '%' },
+        { label: 'Haul Distance',   val: s2n(inputs.haul_dist_m), unit: 'm' },
+        { label: 'Overburden (OB) Cost', val: s2n(inputs.ob_mining_cost), unit: '₹/BCM' },
       ],
       finding: (sc: number) => sc >= 75 ? 'High HEMM productivity — efficient fleet balance and transport' : sc >= 55 ? 'HEMM utilisation or haul distance needs improvement' : 'Low HEMM efficiency — review availability, cycle times, haul design',
     },
@@ -425,8 +692,8 @@ function SubtopicPanel({ breakdowns, inputs }: {
       dims: ['technical'],
       score: 0.65 * s2n(B_T.sr_s, 50) + 0.35 * s2n(B_T.seam_geom_s, 60),
       keys: [
-        { label: 'OSR',      val: s2n(inputs.stripping_ratio_overall), unit: 'BCM:t' },
-        { label: 'BESR',     val: s2n(inputs.besr), unit: 'BCM:t' },
+        { label: 'Overall Stripping Ratio (OSR)', val: s2n(inputs.stripping_ratio_overall), unit: 'BCM:t' },
+        { label: 'Break-Even Stripping Ratio (BESR)', val: s2n(inputs.besr), unit: 'BCM:t' },
         { label: 'Seam Dip', val: s2n(inputs.seam_dip_deg), unit: '°' },
       ],
       finding: (sc: number) => sc >= 75 ? 'Favorable SR — OSR well within break-even strip ratio' : sc >= 55 ? 'OSR approaching BESR — monitor unit production costs' : 'SR uneconomic or steep seam dip — reassess mine design',
@@ -436,7 +703,7 @@ function SubtopicPanel({ breakdowns, inputs }: {
       dims: ['technical', 'environmental', 'risk'],
       score: 0.45 * s2n(B_T.gcv_s, 50) + 0.30 * s2n(B_T.ash_s, 50) + 0.15 * s2n(B_V.sulphur_env_s, 70) + 0.10 * (100 - s2n(B_R.cpt_r, 40)),
       keys: [
-        { label: 'GCV',     val: s2n(inputs.gcv_blended), unit: 'kcal/kg' },
+        { label: 'Gross Calorific Value (GCV)', val: s2n(inputs.gcv_blended), unit: 'kcal/kg' },
         { label: 'Ash',     val: s2n(inputs.ash_pct), unit: '%' },
         { label: 'Sulphur', val: s2n(inputs.sulphur_pct), unit: '%' },
       ],
@@ -458,9 +725,9 @@ function SubtopicPanel({ breakdowns, inputs }: {
       dims: ['environmental', 'risk'],
       score: 0.30 * s2n(B_V.dewat_s, 65) + 0.25 * s2n(B_V.hyd_cond_s, 70) + 0.20 * (100 - s2n(B_R.dewat_r, 30)) + 0.15 * s2n(B_V.pump_head_s, 65) + 0.10 * (100 - s2n(B_R.hydro_r, 30)),
       keys: [
-        { label: 'Inflow',    val: s2n(inputs.water_inflow_m3hr), unit: 'm³/hr' },
-        { label: 'Pump Cap',  val: s2n(inputs.pump_capacity_m3hr), unit: 'm³/hr' },
-        { label: 'Depth WT',  val: s2n(inputs.depth_below_wt_m), unit: 'm' },
+        { label: 'Water Inflow Rate', val: s2n(inputs.water_inflow_m3hr), unit: 'm³/hr' },
+        { label: 'Pump Capacity',     val: s2n(inputs.pump_capacity_m3hr), unit: 'm³/hr' },
+        { label: 'Depth Below Water Table (WT)', val: s2n(inputs.depth_below_wt_m), unit: 'm' },
       ],
       finding: (sc: number) => sc >= 75 ? 'Adequate dewatering — pump capacity safely exceeds inflow rate' : sc >= 55 ? 'Marginal capacity — install piezometer network and standby pumps' : 'High inundation risk — pump capacity must be urgently increased',
     },
@@ -469,9 +736,9 @@ function SubtopicPanel({ breakdowns, inputs }: {
       dims: ['geographical'],
       score: 0.28 * s2n(B_G.rail_s, 60) + 0.22 * s2n(B_G.logi_s, 60) + 0.20 * s2n(B_G.pwr_s, 70) + 0.16 * s2n(B_G.despatch_s, 70) + 0.14 * s2n(B_G.tariff_s, 65),
       keys: [
-        { label: 'Rail Dist', val: s2n(inputs.rail_dist_km), unit: 'km' },
-        { label: 'Despatch',  val: s2n(inputs.annual_despatch_mty), unit: 'MTPA' },
-        { label: 'Power Av',  val: s2n(inputs.grid_power_availability_pct), unit: '%' },
+        { label: 'Rail Distance', val: s2n(inputs.rail_dist_km), unit: 'km' },
+        { label: 'Despatch',      val: s2n(inputs.annual_despatch_mty), unit: 'MTPA' },
+        { label: 'Grid Power Availability', val: s2n(inputs.grid_power_availability_pct), unit: '%' },
       ],
       finding: (sc: number) => sc >= 75 ? 'Strong logistics infrastructure — competitive rail and power access' : sc >= 55 ? 'Logistics adequate but rail tariff or distance is a constraint' : 'Infrastructure gap — rail connectivity or power reliability must be addressed',
     },
@@ -512,7 +779,7 @@ function SubtopicPanel({ breakdowns, inputs }: {
                 {st.dims.map(d => (
                   <span key={d} className="text-[9px] px-1.5 py-0.5 rounded font-semibold"
                     style={{ background: DIM_COLORS[d] + '1A', color: DIM_COLORS[d] }}>
-                    → {d.charAt(0).toUpperCase() + d.slice(1)}
+                    → {d.charAt(0).toUpperCase() + d.slice(1)}{DIM_WEIGHTS[d] ? ` (${DIM_WEIGHTS[d]})` : ''}
                   </span>
                 ))}
               </div>
@@ -608,7 +875,7 @@ function ContributionBars({ contributions, mci }: { contributions: ContribItem[]
   return (
     <div>
       <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">
-        MCI Point Breakdown
+        Mine Composite Index (MCI) Point Breakdown
       </div>
       <div className="space-y-2">
         {sorted.map(c => {
@@ -677,16 +944,115 @@ function ValuationCard({ vm }: { vm: { method: string; reason: string; counter: 
   );
 }
 
-// ── Comparison card ───────────────────────────────────────────────────────────
-const SUBTOPIC_META: Record<string, { label: string; icon: string; color: string }> = {
-  mine_life:       { label: 'Mine Life',       icon: '⏱', color: '#185FA5' },
-  hemm_cost:       { label: 'HEMM & Cost',     icon: '🚛', color: '#185FA5' },
-  stripping_ratio: { label: 'Stripping Ratio', icon: '📐', color: '#185FA5' },
-  coal_quality:    { label: 'Coal Quality',    icon: '🔬', color: '#534AB7' },
-  bench_blast:     { label: 'Bench & Blast',   icon: '💥', color: '#185FA5' },
-  dewatering:      { label: 'Dewatering',      icon: '💧', color: '#3B6D11' },
-  infrastructure:  { label: 'Infrastructure',  icon: '🏗',  color: '#534AB7' },
+// ── Subtopic → MCI Impact Table ──────────────────────────────────────────────
+const SUBTOPIC_META_DEF: Record<string, { label: string; icon: string; color: string; effWt: number; dims: string }> = {
+  mine_life:       { label: 'Mine Life',                                   icon: '⏱', color: '#185FA5', effWt: 2.3,  dims: 'Technical (12.7%)' },
+  hemm_cost:       { label: 'Heavy Earth-Moving Machinery (HEMM) & Cost',  icon: '🚛', color: '#185FA5', effWt: 3.3,  dims: 'Technical (12.7%) + Economic (17.0%)' },
+  stripping_ratio: { label: 'Stripping Ratio (SR)',                         icon: '📐', color: '#185FA5', effWt: 2.2,  dims: 'Technical (12.7%)' },
+  coal_quality:    { label: 'Coal Quality',                                 icon: '🔬', color: '#534AB7', effWt: 5.8,  dims: 'Technical + Environmental + Risk (Safety)' },
+  bench_blast:     { label: 'Bench & Blast Design',                         icon: '💥', color: '#185FA5', effWt: 2.0,  dims: 'Technical (12.7%) + Risk/Safety (26.7%)' },
+  dewatering:      { label: 'Dewatering System',                            icon: '💧', color: '#3B6D11', effWt: 2.1,  dims: 'Environmental (10.1%) + Risk/Safety (26.7%)' },
+  infrastructure:  { label: 'Infrastructure & Logistics',                   icon: '🏗',  color: '#534AB7', effWt: 8.6,  dims: 'Geographical (13.0%) — 86% of dimension' },
 };
+
+function SubtopicImpactTable({ subtopicScores }: { subtopicScores: Record<string, number> }) {
+  const CF = 0.87;
+  const rows = Object.entries(SUBTOPIC_META_DEF)
+    .map(([k, meta]) => {
+      const score = subtopicScores[k] ?? 0;
+      const headroom = Math.max(0, 80 - score);
+      const deltaMCI = +(meta.effWt * (headroom / 100) * CF).toFixed(2);
+      return { k, meta, score, headroom, deltaMCI };
+    })
+    .sort((a, b) => b.deltaMCI - a.deltaMCI);
+
+  const maxDelta = rows[0]?.deltaMCI ?? 1;
+
+  return (
+    <div>
+      <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">
+        Subtopic → Mine Composite Index (MCI) Impact Pathway
+      </div>
+      <div className="text-[9px] text-slate-400 mb-3">
+        Shows how each engineering subtopic score flows into the Mine Composite Index (MCI) through its parent dimension(s).
+        Effective weight = subtopic's share of dimension × dimension ensemble weight.
+        Δ MCI potential = effective weight × headroom to score 80 × calibration factor (0.87).
+      </div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs border border-slate-100 rounded-xl overflow-hidden">
+          <thead>
+            <tr className="bg-[#1F3864] text-white">
+              <th className="px-3 py-2 text-left text-[10px] font-semibold">Subtopic</th>
+              <th className="px-3 py-2 text-left text-[10px] font-semibold">Feeding Dimensions</th>
+              <th className="px-3 py-2 text-center text-[10px] font-semibold">Eff. Wt</th>
+              <th className="px-3 py-2 text-center text-[10px] font-semibold">Current Score</th>
+              <th className="px-3 py-2 text-center text-[10px] font-semibold">Δ MCI Potential</th>
+              <th className="px-3 py-2 text-left text-[10px] font-semibold w-32">Impact Bar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(({ k, meta, score, deltaMCI }, i) => {
+              const st = status(score);
+              const barW = maxDelta > 0 ? (deltaMCI / maxDelta) * 100 : 0;
+              return (
+                <tr key={k} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50/60'}>
+                  <td className="px-3 py-2">
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-sm">{meta.icon}</span>
+                      <span className="text-[10px] font-semibold" style={{ color: meta.color }}>{meta.label}</span>
+                    </div>
+                  </td>
+                  <td className="px-3 py-2 text-[9px] text-slate-500 max-w-[160px]">{meta.dims}</td>
+                  <td className="px-3 py-2 text-center">
+                    <span className="text-[10px] font-black tabular-nums" style={{ color: meta.color }}>{meta.effWt}%</span>
+                  </td>
+                  <td className="px-3 py-2 text-center">
+                    <span className="text-[10px] font-black tabular-nums mr-1" style={{ color: st.dot }}>{score.toFixed(0)}</span>
+                    <span className="text-[9px] px-1 py-0.5 rounded font-semibold" style={{ background: st.bg, color: st.tc }}>{st.label}</span>
+                  </td>
+                  <td className="px-3 py-2 text-center">
+                    {deltaMCI > 0 ? (
+                      <span className="text-[10px] font-black text-green-700">▲ +{deltaMCI} pts</span>
+                    ) : (
+                      <span className="text-[9px] text-slate-400">— at target</span>
+                    )}
+                  </td>
+                  <td className="px-3 py-2">
+                    <div className="h-3 bg-slate-100 rounded overflow-hidden">
+                      <div className="h-full rounded transition-all duration-500"
+                        style={{ width: `${barW}%`, background: meta.color + 'bb' }} />
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+          <tfoot>
+            <tr className="bg-slate-100 border-t-2 border-slate-200">
+              <td colSpan={4} className="px-3 py-2 text-[10px] font-bold text-slate-600">
+                Total recoverable Mine Composite Index (MCI) gain (if all subtopics reach score 80)
+              </td>
+              <td className="px-3 py-2 text-center">
+                <span className="text-[11px] font-black text-green-700">
+                  ▲ +{rows.reduce((s, r) => s + r.deltaMCI, 0).toFixed(1)} pts
+                </span>
+              </td>
+              <td />
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p className="text-[9px] text-slate-400 mt-1.5 italic">
+        * Δ MCI potential = effective weight × max(0, 80 − score) / 100 × 0.87. Target score 80 (Grade A threshold).
+        Actual gain depends on site-specific constraints. Subtopics already ≥ 80 show no recoverable gain.
+      </p>
+    </div>
+  );
+}
+
+// ── Comparison card ───────────────────────────────────────────────────────────
+// SUBTOPIC_META is defined above as SUBTOPIC_META_DEF (shared with SubtopicImpactTable)
+const SUBTOPIC_META = SUBTOPIC_META_DEF;
 
 // ±1 MAE confidence band (model MAE ≈ 2.53 pts)
 const CI_HALF = 2.53;
@@ -910,7 +1276,7 @@ export function ResultPanel({
             <div className="grid grid-cols-2 gap-2">
               {beta !== undefined && (
                 <div className="rounded-xl border p-2.5 bg-blue-50 border-blue-100">
-                  <div className="text-[9px] font-bold text-blue-400 uppercase tracking-wide">β Reliability Index</div>
+                  <div className="text-[9px] font-bold text-blue-400 uppercase tracking-wide">β (Beta) Reliability Index</div>
                   <div className="text-xl font-black text-blue-700 font-mono">{beta.toFixed(2)}</div>
                   <div className="text-[9px] text-blue-500">
                     {beta >= 3.0 ? '✓ Very safe (β ≥ 3.0)' : beta >= 2.0 ? '⚠ Acceptable (β ≥ 2.0)' : beta >= 1.5 ? '⚠ Marginal (β < 2.0)' : '✗ Critical (β < 1.5)'}
@@ -921,7 +1287,7 @@ export function ResultPanel({
               {srViab !== undefined && (
                 <div className={`rounded-xl border p-2.5 ${srViab > 20 ? 'bg-emerald-50 border-emerald-100' : srViab > 0 ? 'bg-amber-50 border-amber-100' : 'bg-red-50 border-red-100'}`}>
                   <div className={`text-[9px] font-bold uppercase tracking-wide ${srViab > 20 ? 'text-emerald-400' : srViab > 0 ? 'text-amber-400' : 'text-red-400'}`}>
-                    SR Viability Margin
+                    Stripping Ratio (SR) Viability Margin
                   </div>
                   <div className={`text-xl font-black font-mono ${srViab > 20 ? 'text-emerald-700' : srViab > 0 ? 'text-amber-600' : 'text-red-600'}`}>
                     {srViab.toFixed(1)}%
@@ -940,6 +1306,11 @@ export function ResultPanel({
       {/* ── 2. MCI POINT BREAKDOWN ── */}
       <div className="card p-4">
         <ContributionBars contributions={contributions} mci={results.mci} />
+      </div>
+
+      {/* ── 2b. DIMENSION SCORES BAR CHART ── */}
+      <div className="card p-4">
+        <DimBarChart scores={results.dimension_scores ?? {}} />
       </div>
 
       {/* ── 3. DIMENSION DEEP-DIVE (7 cards) ── */}
@@ -966,6 +1337,13 @@ export function ResultPanel({
         <SubtopicPanel breakdowns={breakdowns} inputs={inputs} />
       </div>
 
+      {/* ── 4b. SUBTOPIC → MCI IMPACT TABLE ── */}
+      {results.subtopic_scores && Object.keys(results.subtopic_scores).length > 0 && (
+        <div className="card p-4">
+          <SubtopicImpactTable subtopicScores={results.subtopic_scores} />
+        </div>
+      )}
+
       {/* ── 5. IMPROVEMENT ROADMAP ── */}
       <div className="card p-4">
         <ImprovementRoadmap contributions={contributions} />
@@ -980,6 +1358,9 @@ export function ResultPanel({
         <DimRadar scores={results.dimension_scores} />
       </div>
 
+      {/* ── 6b. INPUT PARAMETERS SUMMARY ── */}
+      <InputSummary inputs={inputs} />
+
       {/* ── 7. VALUATION METHOD ── */}
       {results.valuation_method && <ValuationCard vm={results.valuation_method} />}
 
@@ -987,6 +1368,13 @@ export function ResultPanel({
       {comparison?.has_actual && (
         <ComparisonCard results={results} comparison={comparison} />
       )}
+
+      {/* ── 9. DECISION SUMMARY ── */}
+      <DecisionSummary
+        mci={results.mci}
+        grade={results.grade}
+        scores={results.dimension_scores ?? {}}
+      />
     </div>
   );
 }

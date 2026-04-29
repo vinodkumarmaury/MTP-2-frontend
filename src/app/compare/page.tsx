@@ -104,7 +104,7 @@ export default function ComparePage() {
   if (error)   return <div className="p-6 text-red-600 font-medium">{error}</div>;
   if (!data)   return null;
 
-  const { validate_comparisons: vc, predictions, metrics } = data;
+  const { validate_comparisons: vc = [], predictions = [], metrics = {} as any } = data;
 
   // Scatter plot: formula_mci on X (y_pred), actual_mci on Y (y_true)
   const scatterPoints = vc.map(v => ({ x: v.formula_mci, y: v.actual_mci, mine_name: v.mine_name, abs_diff: v.abs_diff }));

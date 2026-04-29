@@ -404,7 +404,7 @@ export default function DataPage() {
 
   useEffect(() => {
     api.get('/api/mines')
-      .then(setMines)
+      .then((d: any) => setMines(Array.isArray(d) ? d : (Array.isArray(d?.mines) ? d.mines : [])))
       .catch((e: any) => setErr(e.message))
       .finally(() => setLoading(false));
   }, []);
