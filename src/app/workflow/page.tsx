@@ -54,11 +54,11 @@ export default function WorkflowPage() {
     },
     {
       n: '4',
-      title: 'MCI computation — Mine Composite Index (v3.0)',
+      title: 'MCI computation — Mine competive index (v3.0)',
       color: '#1F3864',
       body: 'The seven dimension scores are combined using ensemble weights. Risk is scored as Safety Quality (100 − hazard level) so all weights are positive — a safer mine scores higher. Result is scaled by 0.87 calibration factor and clamped to 0–100.',
       params: [
-        'Mine Composite Index (MCI) = 0.127×Technical + 0.170×Economic + 0.101×Environmental + 0.139×Social + 0.130×Geographical + 0.066×Governance + 0.267×Risk(Safety)',
+        'Mine competive index (MCI) = 0.127×Technical + 0.170×Economic + 0.101×Environmental + 0.139×Social + 0.130×Geographical + 0.066×Governance + 0.267×Risk(Safety)',
         'Grade A (80–100): Excellent — Investment grade. Proceed with full development.',
         'Grade B (65–79): Good — Viable. Address weakest dimension before capital commitment.',
         'Grade C (50–64): Marginal — High-risk. Sensitivity analysis required. Staged investment.',
@@ -97,14 +97,14 @@ export default function WorkflowPage() {
     { dim: 'Social',        w: '+13.9%', why: 'LTIFR range 4–22 across mines = high spread. India mandatory CSR elevates weight. Consistent with v2.', col: '#BA7517' },
     { dim: 'Geographical',  w: '+13.0%', why: 'Rail distance and logistics cost vary significantly across India coal belts. Reduced from 13.9% in v2.', col: '#534AB7' },
     { dim: 'Governance',    w: '+6.6%',  why: 'NEW in v3.0. ISO certification and ESG disclosure vary widely. Lower weight as most Indian mines are at similar (low) maturity. Positive contribution.', col: '#6B48C4' },
-    { dim: 'Risk',          w: '+26.7%', why: 'Safety Quality score = 100 \u2212 hazard_level. Higher score = safer mine = positive contribution. Highest weight because safety variance drives the largest Mine Composite Index (MCI) spread across mines.', col: '#A32D2D' },
+    { dim: 'Risk',          w: '+26.7%', why: 'Safety Quality score = 100 \u2212 hazard_level. Higher score = safer mine = positive contribution. Highest weight because safety variance drives the largest Mine competive index (MCI) spread across mines.', col: '#A32D2D' },
   ];
 
   return (
     <div className="space-y-8">
       <div>
         <h1 className="text-2xl font-bold text-[#1F3864] mb-1">How CMEM Works — Full Workflow</h1>
-        <p className="text-slate-500 text-sm">Seven steps from raw mine parameters to Mine Composite Index grade. v3.0 adds Governance as the 7th scoring dimension.</p>
+        <p className="text-slate-500 text-sm">Seven steps from raw mine parameters to Mine competive index grade. v3.0 adds Governance as the 7th scoring dimension.</p>
       </div>
 
       {/* Steps */}
@@ -154,16 +154,16 @@ export default function WorkflowPage() {
         <div className="mt-4 bg-emerald-50 border border-emerald-200 rounded-xl p-4">
           <div className="font-semibold text-emerald-800 text-sm mb-1">Convergence validation</div>
           <p className="text-sm text-emerald-700 leading-relaxed">
-            All three weight derivation methods (Analytic Hierarchy Process, Entropy Weight Method, CRITIC Method) independently produce the same ordinal ranking: Economic highest, Risk (Safety Quality) as the largest single weight. This convergence across different mathematical approaches validates the weight structure. The Analytic Hierarchy Process Consistency Ratio of 0.016 confirms pairwise comparisons are internally coherent (must be below 0.10). In v3.0, Risk is treated as Safety Quality (100 \u2212 hazard level) so it is a positive contribution: safer mine \u2192 higher Mine Composite Index (MCI). Governance is added as a dedicated 7th dimension, with its own positive weight of +6.6%.
+            All three weight derivation methods (Analytic Hierarchy Process, Entropy Weight Method, CRITIC Method) independently produce the same ordinal ranking: Economic highest, Risk (Safety Quality) as the largest single weight. This convergence across different mathematical approaches validates the weight structure. The Analytic Hierarchy Process Consistency Ratio of 0.016 confirms pairwise comparisons are internally coherent (must be below 0.10). In v3.0, Risk is treated as Safety Quality (100 \u2212 hazard level) so it is a positive contribution: safer mine \u2192 higher Mine competive index (MCI). Governance is added as a dedicated 7th dimension, with its own positive weight of +6.6%.
           </p>
         </div>
       </div>
 
       {/* MCI Formula */}
       <div className="bg-[#1F3864] rounded-2xl p-6 text-center">
-        <div className="text-blue-200 text-xs mb-2 font-semibold uppercase tracking-widest">Mine Composite Index Formula — v3.0</div>
+        <div className="text-blue-200 text-xs mb-2 font-semibold uppercase tracking-widest">Mine competive index Formula — v3.0</div>
         <div className="text-white font-mono text-sm md:text-base font-bold leading-relaxed">
-          Mine Composite Index (MCI) = 0.127T + 0.170E + 0.101Env + 0.139S + 0.130G + 0.066Gov + 0.267R
+          Mine competive index (MCI) = 0.127T + 0.170E + 0.101Env + 0.139S + 0.130G + 0.066Gov + 0.267R
         </div>
         <div className="text-blue-300 text-xs mt-3 leading-relaxed">
           T = Technical · E = Economic · Env = Environmental · S = Social · G = Geographical · Gov = Governance · R = Risk (Safety Quality)

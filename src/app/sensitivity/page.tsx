@@ -119,7 +119,7 @@ export default function SensitivityPage() {
         </div>
         <h1 className="text-3xl font-bold mb-2">Sensitivity Analysis</h1>
         <p className="text-blue-100 text-sm leading-relaxed max-w-3xl">
-          Perturb each parameter by ±10%, ±20%, ±30% and observe the change in MCI score.
+          Perturb each parameter by ±10%, ±20%, ±30% and observe the change in Mine Competitive Index (MCI) score.
           The <strong>Tornado Chart</strong> shows which parameters drive the model — largest swings at the top.
           Derived using the <em>one-at-a-time (OAT)</em> method; all other parameters held at base value.
         </p>
@@ -162,7 +162,7 @@ export default function SensitivityPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
               { label: 'Mine', val: result.mine_name },
-              { label: 'Base Mine Composite Index (MCI)', val: result.base_mci.toFixed(1) },
+              { label: 'Base Mine Competitive Index (MCI)', val: result.base_mci.toFixed(1) },
               { label: 'Grade', val: `Grade ${result.base_grade}` },
               { label: 'Parameters Tested', val: result.n_params },
             ].map(s => (
@@ -180,7 +180,7 @@ export default function SensitivityPage() {
                 <div>
                   <h2 className="font-bold text-[#1F3864] text-base">Tornado Chart — Parameter Sensitivity</h2>
                   <p className="text-xs text-slate-400 mt-0.5">
-                    Each bar shows ΔMCI when parameter is changed ±20%. Sorted by swing (absolute impact).
+                    Each bar shows ΔMine Competitive Index (MCI) when parameter is changed ±20%. Sorted by swing (absolute impact).
                   </p>
                 </div>
                 <div className="space-y-1.5">
@@ -232,7 +232,7 @@ export default function SensitivityPage() {
                   }}
                 >
                   <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                  <XAxis type="number" tick={{ fontSize: 10 }} label={{ value: '\u0394Mine Composite Index (MCI) (points)', position: 'insideBottom', offset: -2, fontSize: 10 }} />
+                  <XAxis type="number" tick={{ fontSize: 10 }} label={{ value: '\u0394Mine Competitive Index (MCI) (points)', position: 'insideBottom', offset: -2, fontSize: 10 }} />
                   <YAxis
                     type="category" dataKey="name"
                     width={140}
@@ -269,7 +269,7 @@ export default function SensitivityPage() {
               <div className="card p-4">
                 <h3 className="font-bold text-[#1F3864] text-sm mb-1">⚙ Subtopic-level Sensitivity</h3>
                 <p className="text-[10px] text-slate-400 mb-3">
-                  Total parameter swing grouped by engineering section — which subtopic drives MCI the most?
+                  Total parameter swing grouped by engineering section — which subtopic drives Mine Competitive Index (MCI) the most?
                 </p>
                 <div className="space-y-1.5">
                   {subtopicData.map(({ st, icon, sensitivity, color }) => {
@@ -325,7 +325,7 @@ export default function SensitivityPage() {
                     {selected.label}
                   </h3>
                   <p className="text-[10px] text-slate-400 mb-3">
-                    MCI response as parameter changes ±30%. Swing = {selected.swing.toFixed(2)} pts.
+                    Mine Competitive Index (MCI) response as parameter changes ±30%. Swing = {selected.swing.toFixed(2)} pts.
                   </p>
                   <ResponsiveContainer width="100%" height={180}>
                     <LineChart data={selected.curve} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
@@ -334,7 +334,7 @@ export default function SensitivityPage() {
                         tickFormatter={(v: number) => `${v > 0 ? '+' : ''}${v}%`} />
                       <YAxis tick={{ fontSize: 9 }} domain={['auto', 'auto']} />
                       <Tooltip
-                        formatter={(v: number) => [v.toFixed(2), 'MCI']}
+                        formatter={(v: number) => [v.toFixed(2), 'Mine Competitive Index (MCI)']}
                         labelFormatter={(l: number) => `${l > 0 ? '+' : ''}${l}% change`}
                         contentStyle={{ fontSize: 11, borderRadius: 8 }}
                       />
@@ -441,7 +441,7 @@ export default function SensitivityPage() {
           <div className="text-5xl mb-3">🌪️</div>
           <p className="text-sm font-semibold">Select a reference mine and click &ldquo;Run Sensitivity Analysis&rdquo;</p>
           <p className="text-xs mt-1 max-w-md mx-auto">
-            The tornado chart will show which of the 150+ parameters has the greatest impact on the Composite Mine Index (MCI) score.
+            The tornado chart will show which of the 150+ parameters has the greatest impact on the Competitive Mine Index (MCI) score.
           </p>
         </div>
       )}

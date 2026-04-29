@@ -12,11 +12,11 @@ const GRADE_SCALE = [
 
 const FEATURES = [
   { href:'/predict',     icon:'⛏',  label:'Predict',         desc:'8-section form: Economic, Technical, Geological, Environmental, Social, Geographical, Risk + Governance. SVG gauge, radar chart, dimension breakdowns.' },
-  { href:'/compare',     icon:'📊', label:'Compare',         desc:'Scatter plot + residual table: Formula Mine Composite Index (MCI) predicted vs actual expert scores for 4 validate mines. Mean Absolute Error (MAE) & R² shown.' },
-  { href:'/sensitivity', icon:'🌪️', label:'Sensitivity',     desc:'Tornado chart: perturb each parameter ±10/20/30% to find which inputs drive Mine Composite Index (MCI) most. Dimension-level sensitivity aggregation. One-At-a-Time (OAT) method.' },
+  { href:'/compare',     icon:'📊', label:'Compare',         desc:'Scatter plot + residual table: Formula Mine competive index (MCI) predicted vs actual expert scores for 4 validate mines. Mean Absolute Error (MAE) & R² shown.' },
+  { href:'/sensitivity', icon:'🌪️', label:'Sensitivity',     desc:'Tornado chart: perturb each parameter ±10/20/30% to find which inputs drive Mine competive index (MCI) most. Dimension-level sensitivity aggregation. One-At-a-Time (OAT) method.' },
   { href:'/history',     icon:'📋', label:'History',         desc:'Every prediction saved. Edit parameters (Save), then Re-Evaluate separately to recompute scores. Export PDF report for any record.' },
   { href:'/parameters',  icon:'📖', label:'Parameters',      desc:'All 150+ parameters documented: definition, relevance to Composite Mine Evaluation Model (CMEM), formula, and source reference mine.' },
-  { href:'/workflow',    icon:'🔄', label:'Workflow',        desc:'Step-by-step explanation: how 150+ inputs flow through 7 dimension scoring functions → ensemble weights → Mine Composite Index (MCI) → Grade.' },
+  { href:'/workflow',    icon:'🔄', label:'Workflow',        desc:'Step-by-step explanation: how 150+ inputs flow through 7 dimension scoring functions → ensemble weights → Mine competive index (MCI) → Grade.' },
   { href:'/data',        icon:'🗄', label:'Mine Data',       desc:'12 real Indian Opencast (OC) coal mines (8 train, 4 validate incl. 2 Australian). Click any mine to test-predict; validate mines show actual vs predicted error.' },
 ];
 
@@ -46,15 +46,13 @@ export default function Home() {
         <div className="text-blue-300 text-xs font-semibold tracking-widest uppercase mb-3">
           M.Tech Thesis · IIT Kharagpur · Mining Engineering · 2026
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold mb-3">Composite Mine Evaluation Model</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-3">Mine Competitive Index Framework</h1>
         <p className="text-blue-100 text-base leading-relaxed max-w-3xl mb-2">
-          Evaluates Open-Cast (OC) coal mines across <strong>7 dimensions</strong> using <strong>150+ parameters</strong>.
-          Weights derived from Analytic Hierarchy Process (AHP) + Entropy Weight Method (EWM) + CRITIC ensemble — not expert assumption.
-          Validated against 4 real Opencast (OC) mines (2 Indian NCL + 2 Australian) — Mean Absolute Error (MAE) 2.5 pts.
+          A data-driven system that evaluates Open-Cast (OC) coal mines across <strong>7 dimensions</strong> using over <strong>150 parameters</strong>.
+          The application uses a machine-learning ensemble to predict a Mine competive index(MCI), providing objective, reproducible scores validated on real-world mines with an average error of about 2.5 points.
         </p>
         <p className="text-blue-300 text-sm mb-6">
-          v3.0 — adds <span className="text-white font-semibold">Governance</span> as 7th dimension:
-          ISO 14001/45001, Directorate General of Mines Safety (DGMS) compliance, Environmental, Social, and Governance (ESG) disclosure score, regulatory violation tracking.
+          <strong>v3.0</strong> introduces <span className="text-white font-semibold">Governance</span> as the 7th dimension, covering ISO 14001 (Environmental Management) / ISO 45001 (Occupational Health & Safety) status, Directorate General of Mines Safety (DGMS) compliance, Environmental, Social, and Governance (ESG) disclosure indicators, and regulatory-violation tracking.
         </p>
         <div className="flex flex-wrap gap-3">
           <Link href="/predict"   className="bg-white text-[#1F3864] font-semibold px-5 py-2.5 rounded-xl hover:bg-blue-50 transition text-sm">Predict a Mine →</Link>

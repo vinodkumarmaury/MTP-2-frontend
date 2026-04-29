@@ -370,7 +370,7 @@ export default function PredictPage() {
                     </svg>
                     Calculating…
                   </span>
-                ) : 'Calculate MCI →'}
+                ) : 'Calculate Mine Competitive Index (MCI) →'}
               </button>
             )}
           </div>
@@ -385,9 +385,9 @@ export default function PredictPage() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
                   </svg>
-                  Calculating MCI…
+                  Calculating Mine Competitive Index (MCI)…
                 </span>
-              ) : 'Calculate Mine Composite Index →'}
+              ) : 'Calculate Mine Competitive Index →'}
             </button>
           )}
 
@@ -415,7 +415,7 @@ export default function PredictPage() {
                 Results will appear here after you calculate
               </div>
               <div className="text-slate-300 text-xs">
-                7 dimensions · 150+ parameters · AHP+EWM+CRITIC ensemble weights
+                7 dimensions · 150+ parameters · Machine learning ensemble used to predict the Mine competive index(MCI)
               </div>
               <div className="grid grid-cols-2 gap-2 mt-2 w-full max-w-xs">
                 {Object.entries(DIM_META).map(([k, m]) => (

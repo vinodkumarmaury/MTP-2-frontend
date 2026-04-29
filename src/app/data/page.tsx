@@ -440,7 +440,7 @@ export default function DataPage() {
     { label: 'Total Mines',          value: mines.length || 12 },
     { label: 'Training Mines',       value: trainMines.length || 9 },
     { label: 'Validation Mines',     value: validateMines.length || 3 },
-    { label: 'Average Mine Composite Index (MCI) (predicted)',  value: avgMci ?? '—' },
+    { label: 'Average Mine Competitive Index (MCI) (predicted)',  value: avgMci ?? '—' },
   ];
 
   return (

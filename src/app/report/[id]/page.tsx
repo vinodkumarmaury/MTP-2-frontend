@@ -112,7 +112,7 @@ export default function ReportPage({ params }: { params: { id: string } }) {
             M.Tech Thesis · IIT Kharagpur · Mining Engineering · 2026
           </div>
           <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 4 }}>
-            Composite Mine Evaluation Report
+            Mine Competitive Index Report
           </div>
           <div style={{ fontSize: 17, color: '#BFDBFE', marginBottom: 8 }}>
             {rec.mine_name}
@@ -120,7 +120,7 @@ export default function ReportPage({ params }: { params: { id: string } }) {
           <div style={{ fontSize: 10, color: '#93C5FD', display: 'flex', gap: 24, flexWrap: 'wrap' }}>
             <span>Model: CMEM v3.0</span>
             <span>7 Dimensions · 150+ Parameters</span>
-            <span>Weights: Analytic Hierarchy Process (AHP) + Entropy Weight Method (EWM) + CRITIC Ensemble</span>
+            <span>Weights: Machine-learning ensemble (internal)</span>
             <span>Generated: {now}</span>
           </div>
         </div>
@@ -275,20 +275,17 @@ export default function ReportPage({ params }: { params: { id: string } }) {
         {/* Model overview */}
         <div style={{ borderBottom: '2px solid #1F3864', marginBottom: 14, paddingBottom: 4 }}>
           <span style={{ fontSize: 12, fontWeight: 800, color: '#1F3864', textTransform: 'uppercase', letterSpacing: 1 }}>
-            CMEM Model Overview
+            MCI Framework Overview
           </span>
         </div>
         <div style={{ fontSize: 10, lineHeight: 1.7, color: '#475569', marginBottom: 20 }}>
           <p style={{ marginBottom: 8 }}>
-            The <strong>Composite Mine Evaluation Model (CMEM v3.0)</strong> is a multi-criteria decision analysis framework
+            The <strong>Mine Competitive Index Framework (CMEM v3.0)</strong> is a multi-criteria decision analysis system
             developed for evaluating Open-Cast coal mine viability. It aggregates 150+ operational parameters across
-            seven dimensions using an ensemble weighting scheme derived from three independent methods:
-            <strong> Analytic Hierarchy Process (AHP)</strong> (50% weight),
-            <strong> Entropy Weight Method (EWM)</strong> (30% weight), and
-            <strong> CRITIC method</strong> (20% weight).
+            seven dimensions using a machine-learning ensemble to derive robust dimension weights.
           </p>
           <p style={{ marginBottom: 8 }}>
-            The Mine Composite Index (MCI) formula: MCI = 0.170·Economic + 0.127·Technical + 0.139·Social + 0.130·Geographical + 0.101·Environmental + 0.066·Governance − 0.267·Risk
+            The Mine competive index (MCI) formula: MCI = 0.170·Economic + 0.127·Technical + 0.139·Social + 0.130·Geographical + 0.101·Environmental + 0.066·Governance − 0.267·Risk
           </p>
           <p>
             Validated against {'{4}'} reference mines with known expert scores. Target: MAE &lt; 5 pts, R² &gt; 0.90.

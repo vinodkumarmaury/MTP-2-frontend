@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import './globals.css';
 
-export const metadata: Metadata = { title: 'CMEM — Composite Mine Evaluation Model', description: 'OC Coal Mine Evaluation · IIT Kharagpur' };
+export const metadata: Metadata = { title: 'MEM — Mine Evaluation Model', description: 'OC Coal Mine Evaluation · IIT Kharagpur' };
 
 const NAV = [
   { href:'/',            label:'Home' },

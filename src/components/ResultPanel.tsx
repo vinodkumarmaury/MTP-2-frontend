@@ -246,7 +246,7 @@ function DecisionSummary({
         </span>
         <div className="flex-1">
           <div className="text-[9px] font-bold uppercase tracking-widest mb-0.5" style={{ color: gs.tc, opacity: 0.7 }}>
-            Mine Composite Index — Decision Summary
+            Mine competive index — Decision Summary
           </div>
           <div className="text-sm font-bold leading-snug" style={{ color: gs.tc }}>
             {gradeRec[grade] ?? 'Evaluation complete.'}
@@ -322,7 +322,7 @@ function DecisionSummary({
   );
 }
 
-// ── Mine Composite Index (MCI) Gauge ────────────────────────────────────────────────────────────────────
+// ── Mine competive index (MCI) Gauge ────────────────────────────────────────────────────────────────────
 
 export function MCIGauge({ mci, grade }: { mci: number; grade: string }) {
   const gs = gradeStyle(grade);
@@ -875,7 +875,7 @@ function ContributionBars({ contributions, mci }: { contributions: ContribItem[]
   return (
     <div>
       <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">
-        Mine Composite Index (MCI) Point Breakdown
+        Mine competive index (MCI) Point Breakdown
       </div>
       <div className="space-y-2">
         {sorted.map(c => {
@@ -971,10 +971,10 @@ function SubtopicImpactTable({ subtopicScores }: { subtopicScores: Record<string
   return (
     <div>
       <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">
-        Subtopic → Mine Composite Index (MCI) Impact Pathway
+        Subtopic → Mine competive index (MCI) Impact Pathway
       </div>
       <div className="text-[9px] text-slate-400 mb-3">
-        Shows how each engineering subtopic score flows into the Mine Composite Index (MCI) through its parent dimension(s).
+        Shows how each engineering subtopic score flows into the Mine competive index (MCI) through its parent dimension(s).
         Effective weight = subtopic's share of dimension × dimension ensemble weight.
         Δ MCI potential = effective weight × headroom to score 80 × calibration factor (0.87).
       </div>
@@ -1030,7 +1030,7 @@ function SubtopicImpactTable({ subtopicScores }: { subtopicScores: Record<string
           <tfoot>
             <tr className="bg-slate-100 border-t-2 border-slate-200">
               <td colSpan={4} className="px-3 py-2 text-[10px] font-bold text-slate-600">
-                Total recoverable Mine Composite Index (MCI) gain (if all subtopics reach score 80)
+                Total recoverable Mine competive index (MCI) gain (if all subtopics reach score 80)
               </td>
               <td className="px-3 py-2 text-center">
                 <span className="text-[11px] font-black text-green-700">
@@ -1252,7 +1252,7 @@ export function ResultPanel({
       {/* ── 1. HERO: MCI Score + Grade + Key Derived Metrics ── */}
       <div className="card p-5">
         <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest text-center mb-2">
-          Mine Composite Index (MCI)
+          Mine competive index (MCI)
         </div>
         <div className="flex flex-col md:flex-row items-center gap-6">
           {/* Gauge */}
