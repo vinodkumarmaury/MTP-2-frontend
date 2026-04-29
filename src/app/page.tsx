@@ -15,8 +15,7 @@ const FEATURES = [
   { href:'/compare',     icon:'📊', label:'Compare',         desc:'Scatter plot + residual table: Formula Mine competive index (MCI) predicted vs actual expert scores for 4 validate mines. Mean Absolute Error (MAE) & R² shown.' },
   { href:'/sensitivity', icon:'🌪️', label:'Sensitivity',     desc:'Tornado chart: perturb each parameter ±10/20/30% to find which inputs drive Mine competive index (MCI) most. Dimension-level sensitivity aggregation. One-At-a-Time (OAT) method.' },
   { href:'/history',     icon:'📋', label:'History',         desc:'Every prediction saved. Edit parameters (Save), then Re-Evaluate separately to recompute scores. Export PDF report for any record.' },
-  { href:'/parameters',  icon:'📖', label:'Parameters',      desc:'All 150+ parameters documented: definition, relevance to Mine Competitive Index Framework
- (CMEM), formula, and source reference mine.' },
+  { href:'/parameters',  icon:'📖', label:'Parameters',      desc:'All 150+ parameters documented: definition, relevance to Mine Competitive Index Framework (CMEM), formula, and source reference mine.' },
   { href:'/workflow',    icon:'🔄', label:'Workflow',        desc:'Step-by-step explanation: how 150+ inputs flow through 7 dimension scoring functions → ensemble weights → Mine competive index (MCI) → Grade.' },
   { href:'/data',        icon:'🗄', label:'Mine Data',       desc:'12 real Indian Opencast (OC) coal mines (8 train, 4 validate incl. 2 Australian). Click any mine to test-predict; validate mines show actual vs predicted error.' },
 ];
