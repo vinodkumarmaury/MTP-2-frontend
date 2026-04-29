@@ -305,7 +305,8 @@ export default function ReportPage({ params }: { params: { id: string } }) {
 
         {/* Footer */}
         <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: 12, marginTop: 8, display: 'flex', justifyContent: 'space-between', fontSize: 9, color: '#94a3b8' }}>
-          <span>CMEM v3.0 · Composite Mine Evaluation Model · IIT Kharagpur Mining Engineering · 2026</span>
+          <span>CMEM v3.0 · Mine Competitive Index Framework
+ · IIT Kharagpur Mining Engineering · 2026</span>
           <span>Generated: {now} · Record ID: {params.id}</span>
         </div>
       </div>

@@ -1,6 +1,7 @@
 # CMEM Frontend — Web Application v3.0
 
-Next.js 14 + TypeScript + Tailwind CSS interface for the **Composite Mine Evaluation Model (CMEM)** — interactive mine scoring, comparison, sensitivity analysis, and printable reports.
+Next.js 14 + TypeScript + Tailwind CSS interface for the **Mine Competitive Index Framework
+ (CMEM)** — interactive mine scoring, comparison, sensitivity analysis, and printable reports.
 
 ## Stack
 
