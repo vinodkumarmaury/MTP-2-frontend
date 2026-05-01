@@ -448,7 +448,7 @@ export default function DataPage() {
       <div>
         <h1 className="text-2xl font-bold text-[#1F3864] mb-1">Mine Dataset</h1>
         <p className="text-slate-500 text-sm">
-          12 real Indian OC coal mines. Click Predict on any mine to run CMEM evaluation.
+          12 real Indian OC coal mines. Click Predict on any mine to run MCIF evaluation.
           Validate mines show actual vs predicted comparison.
         </p>
       </div>
@@ -509,7 +509,7 @@ export default function DataPage() {
             </div>
             <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-3 text-xs text-amber-800">
               These mines were held out from weight derivation. Predicting on them and comparing with
-              actual scores tests whether CMEM generalises beyond its training data.
+              actual scores tests whether MCIF generalises beyond its training data.
             </div>
             <div className="space-y-2">
               {validateMines.map(m => (

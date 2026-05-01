@@ -115,7 +115,7 @@ export default function SensitivityPage() {
       {/* Header */}
       <div className="bg-[#1F3864] rounded-2xl p-7 text-white">
         <div className="text-blue-300 text-xs font-semibold tracking-widest uppercase mb-2">
-          Analytical Tool · CMEM v3.0
+          Analytical Tool · MCIF v3.0
         </div>
         <h1 className="text-3xl font-bold mb-2">Sensitivity Analysis</h1>
         <p className="text-blue-100 text-sm leading-relaxed max-w-3xl">

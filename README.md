@@ -1,7 +1,7 @@
-# CMEM Frontend — Web Application v3.0
+# MCIF Frontend — Web Application v3.0
 
 Next.js 14 + TypeScript + Tailwind CSS interface for the **Mine Competitive Index Framework
- (CMEM)** — interactive mine scoring, comparison, sensitivity analysis, and printable reports.
+ (MCIF)** — interactive mine scoring, comparison, sensitivity analysis, and printable reports.
 
 ## Stack
 
@@ -28,7 +28,7 @@ MTP-2-frontend/
 │   │   ├── compare/page.tsx          # Multi-mine radar chart comparison
 │   │   ├── sensitivity/page.tsx      # OAT sensitivity waterfall chart
 │   │   ├── data/page.tsx             # Reference mine data browser
-│   │   └── workflow/page.tsx         # How CMEM works — full methodology
+│   │   └── workflow/page.tsx         # How MCIF works — full methodology
 │   ├── components/
 │   │   ├── ResultPanel.tsx           # MCI result display, grade card, ComparisonCard
 │   │   ├── Sidebar.tsx               # Navigation sidebar

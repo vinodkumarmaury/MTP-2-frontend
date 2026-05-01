@@ -184,7 +184,7 @@ export default function ThesisPage() {
           <div className="w-10 h-10 bg-[#1F3864] rounded-xl flex items-center justify-center font-black text-white text-lg">M</div>
           <div>
             <div className="text-2xl font-black text-[#1F3864] leading-tight">
-                Mine Competitive Index Framework (CMEM) — Thesis Results
+                Mine Competitive Index Framework (MCIF) — Thesis Results
               </div>
           </div>
         </div>
@@ -532,7 +532,7 @@ export default function ThesisPage() {
                 Model across Indian and Australian Opencast Coal Mines.
               </p>
               <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside">
-                <li>7-Dimension CMEM framework with 150+ parameters — validated on held-out mines</li>
+                <li>7-Dimension MCIF framework with 150+ parameters — validated on held-out mines</li>
                 <li>3-method ensemble (AHP + EWM + CRITIC) for robust, unbiased weight derivation</li>
                 <li>Risk (Safety) treated as multiplicative penalty preserving MCI sensitivity</li>
                 <li>Grade scale (A–D) aligned with Indian coal sector investment norms</li>

@@ -122,7 +122,7 @@ export default function ComparePage() {
       <div>
         <h1 className="text-2xl font-bold text-[#1F3864]">Formula vs Actual Comparison</h1>
         <p className="text-sm text-slate-500 mt-1">
-          <span className="font-semibold text-[#185FA5]">Formula MCI</span> (y_pred) — analytical score computed from 150+ parameters using CMEM formulas.{' '}
+          <span className="font-semibold text-[#185FA5]">Formula MCI</span> (y_pred) — analytical score computed from 150+ parameters using MCIF formulas.{' '}
           <span className="font-semibold text-[#A32D2D]">Actual Score</span> (y_true) — independent expert assessment from mine annual reports / DGMS inspections.
           Small residuals on <em>held-out validate mines</em> demonstrate that the formula generalises to unseen data.
         </p>
@@ -297,7 +297,7 @@ export default function ComparePage() {
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-900">
             <p className="font-semibold mb-1">Validation Methodology</p>
             <p>
-              No external MPI index exists for Indian OC coal mines. The CMEM formula score is computed analytically from domain
+              No external MPI index exists for Indian OC coal mines. The MCIF formula score is computed analytically from domain
               formulas and verified against independent expert assessments published in mine annual reports and DGMS inspection reports.
               Validate mines were <strong>never used</strong> to derive the ensemble weights — they serve as a held-out test set.
               A MAE &lt; 5 pts and residuals falling within ±1 grade boundary confirm the formula captures genuine mining economics.

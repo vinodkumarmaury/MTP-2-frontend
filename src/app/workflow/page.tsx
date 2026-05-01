@@ -69,7 +69,7 @@ export default function WorkflowPage() {
       n: '5',
       title: 'Valuation method selection (CIMVAL Code)',
       color: '#1D9E75',
-      body: 'Based on the mine lifecycle stage, CMEM automatically selects the appropriate economic valuation method per the CIMVAL Code (CIM, 2019). The counter-condition — when NOT to use the primary method — is also stated.',
+      body: 'Based on the mine lifecycle stage, MCIF automatically selects the appropriate economic valuation method per the CIMVAL Code (CIM, 2019). The counter-condition — when NOT to use the primary method — is also stated.',
       params: [
         'Producing stage → Discounted Cash Flow (DCF) / Net Present Value (NPV) / Internal Rate of Return (IRR) (Income Approach). Counter: commodity σ > 40% → Scenario DCF at P10/P50/P90.',
         'Development stage → Discounted Cash Flow (DCF) + Real Options Valuation. Counter: all options contractually committed → Pure DCF ±15%.',
@@ -80,7 +80,7 @@ export default function WorkflowPage() {
       n: '6',
       title: 'Comparison — actual vs predicted (validate mines)',
       color: '#A32D2D',
-      body: 'For the three validate-split mines (MINE_010, MINE_011, MINE_012) where actual assessment scores are known, CMEM automatically shows predicted vs actual comparison with per-dimension error analysis.',
+      body: 'For the three validate-split mines (MINE_010, MINE_011, MINE_012) where actual assessment scores are known, MCIF automatically shows predicted vs actual comparison with per-dimension error analysis.',
       params: [
         'Error < 5 points: Excellent model fit',
         'Error 5–12 points: Acceptable — within expected variance from analytical scoring approximation',
@@ -103,7 +103,7 @@ export default function WorkflowPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-[#1F3864] mb-1">How CMEM Works — Full Workflow</h1>
+        <h1 className="text-2xl font-bold text-[#1F3864] mb-1">How MCIF Works — Full Workflow</h1>
         <p className="text-slate-500 text-sm">Seven steps from raw mine parameters to Mine competive index grade. v3.0 adds Governance as the 7th scoring dimension.</p>
       </div>
 

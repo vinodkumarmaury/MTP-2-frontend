@@ -118,7 +118,7 @@ export default function ReportPage({ params }: { params: { id: string } }) {
             {rec.mine_name}
           </div>
           <div style={{ fontSize: 10, color: '#93C5FD', display: 'flex', gap: 24, flexWrap: 'wrap' }}>
-            <span>Model: CMEM v3.0</span>
+            <span>Model: MCIF v3.0</span>
             <span>7 Dimensions · 150+ Parameters</span>
             <span>Weights: Machine-learning ensemble (internal)</span>
             <span>Generated: {now}</span>
@@ -228,7 +228,7 @@ export default function ReportPage({ params }: { params: { id: string } }) {
             </div>
             <div style={{ display: 'flex', gap: 16, marginBottom: 24, flexWrap: 'wrap' }}>
               {[
-                { label: 'Formula MCI (CMEM)',     val: rec.comparison.formula_mci?.toFixed(1),  color: '#185FA5' },
+                { label: 'Formula MCI (MCIF)',     val: rec.comparison.formula_mci?.toFixed(1),  color: '#185FA5' },
                 { label: 'Expert Score (Actual)',  val: rec.comparison.actual_mci?.toFixed(1),   color: '#1D9E75' },
                 { label: 'Absolute Error',         val: `${Math.abs(rec.comparison.errors?.mci?.diff ?? 0).toFixed(2)} pts`, color: '#BA7517' },
                 { label: '% Error',                val: `${rec.comparison.errors?.mci?.pct?.toFixed(1) ?? '—'}%`, color: '#A32D2D' },
@@ -280,7 +280,7 @@ export default function ReportPage({ params }: { params: { id: string } }) {
         </div>
         <div style={{ fontSize: 10, lineHeight: 1.7, color: '#475569', marginBottom: 20 }}>
           <p style={{ marginBottom: 8 }}>
-            The <strong>Mine Competitive Index Framework (CMEM v3.0)</strong> is a multi-criteria decision analysis system
+            The <strong>Mine Competitive Index Framework (MCIF v3.0)</strong> is a multi-criteria decision analysis system
             developed for evaluating Open-Cast coal mine viability. It aggregates 150+ operational parameters across
             seven dimensions using a machine-learning ensemble to derive robust dimension weights.
           </p>
@@ -305,7 +305,7 @@ export default function ReportPage({ params }: { params: { id: string } }) {
 
         {/* Footer */}
         <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: 12, marginTop: 8, display: 'flex', justifyContent: 'space-between', fontSize: 9, color: '#94a3b8' }}>
-          <span>CMEM v3.0 · Mine Competitive Index Framework
+          <span>MCIF v3.0 · Mine Competitive Index Framework
  · IIT Kharagpur Mining Engineering · 2026</span>
           <span>Generated: {now} · Record ID: {params.id}</span>
         </div>

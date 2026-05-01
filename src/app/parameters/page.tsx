@@ -787,7 +787,7 @@ const PARAM_DOCS: Record<string, ParamDoc> = {
 // ── fallback doc for fields without a PARAM_DOCS entry ──────────────────────
 function getDoc(k: string): ParamDoc {
   return PARAM_DOCS[k] ?? {
-    desc: 'Parameter used in CMEM evaluation. Refer to the relevant section formula sheet.',
+    desc: 'Parameter used in MCIF evaluation. Refer to the relevant section formula sheet.',
     formula: 'See dimension scoring formula.',
     scoring: 'Contributes to dimension score via sub-factor weight.',
     benchmark: 'Refer to CMPDI benchmark database.',
@@ -833,7 +833,7 @@ export default function ParametersPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-[#1F3864] mb-1">CMEM Parameter Reference</h1>
+        <h1 className="text-2xl font-bold text-[#1F3864] mb-1">MCIF Parameter Reference</h1>
         <p className="text-slate-500 text-sm">
           Comprehensive documentation for all 150+ parameters — formulas, scoring logic, and Indian OC coal benchmarks.
         </p>

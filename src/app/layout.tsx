@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="flex items-center gap-2.5">
               <div className="w-7 h-7 bg-[#2E75B6] rounded-lg flex items-center justify-center font-bold text-white text-sm">M</div>
               <div>
-                <div className="font-bold text-white text-sm leading-none">CMEM</div>
+                <div className="font-bold text-white text-sm leading-none">MCIF</div>
                 <div className="text-blue-300 text-[9px] leading-none">OC Coal Mine Evaluation</div>
               </div>
             </Link>
@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </nav>
         <main className="max-w-7xl mx-auto px-4 py-6">{children}</main>
         <footer className="bg-[#1F3864] text-blue-300 text-xs text-center py-3 mt-8">
-          CMEM v3.0 · 7 Dimensions · 150+ Parameters · 12 OC Coal Mines · IIT Kharagpur Mining Engineering · 2026
+          MCIF v3.0 · 7 Dimensions · 150+ Parameters · 12 OC Coal Mines · IIT Kharagpur Mining Engineering · 2026
         </footer>
       </body>
     </html>

@@ -30,7 +30,7 @@ IIT Kharagpur
 
 I, **Vinod Kumar Maurya**, Roll No.: [Roll Number], a student of M.Tech (Mining Engineering) at the Indian Institute of Technology Kharagpur, hereby declare that the thesis entitled:
 
-> **"Mine Competitive Index Framework (CMEM) for Opencast Coal Mines: A Multi-Criteria Decision Framework Using Ensemble Weight Derivation"**
+> **"Mine Competitive Index Framework (MCIF) for Opencast Coal Mines: A Multi-Criteria Decision Framework Using Ensemble Weight Derivation"**
 
 is a record of original research work carried out by me under the supervision of **[Supervisor Name]**, Professor, Department of Mining Engineering, Indian Institute of Technology Kharagpur, in partial fulfilment of the requirements for the award of the degree of Master of Technology in Mining Engineering.
 
@@ -54,7 +54,7 @@ I further declare that:
 
 This is to certify that the thesis entitled:
 
-> **"Mine Competitive Index Framework (CMEM) for Opencast Coal Mines: A Multi-Criteria Decision Framework Using Ensemble Weight Derivation"**
+> **"Mine Competitive Index Framework (MCIF) for Opencast Coal Mines: A Multi-Criteria Decision Framework Using Ensemble Weight Derivation"**
 
 submitted by **Vinod Kumar Maurya** (Roll No.: [Roll Number]) to the Indian Institute of Technology Kharagpur is a record of bona fide research work carried out under my supervision and guidance in the Department of Mining Engineering.
 
@@ -80,7 +80,7 @@ I gratefully acknowledge the public-domain data made available by **Coal India L
 
 I am thankful to **Coronado Global Resources** and **Stanwell Corporation (Australia)** for making their Annual Reports and operational data publicly available, which enabled the cross-country validation of the Mine Composite Index (MCI) model on Australian opencast coal mines.
 
-I acknowledge the pioneering contributions of **Thomas L. Saaty** (Analytic Hierarchy Process), **Claude Shannon** (Entropy Weight Method), and **Diakoulaki et al.** (CRITIC method), whose published methodologies form the ensemble weight derivation core of the CMEM. I am indebted to the broader MCDA research community whose published literature is cited throughout this thesis.
+I acknowledge the pioneering contributions of **Thomas L. Saaty** (Analytic Hierarchy Process), **Claude Shannon** (Entropy Weight Method), and **Diakoulaki et al.** (CRITIC method), whose published methodologies form the ensemble weight derivation core of the MCIF. I am indebted to the broader MCDA research community whose published literature is cited throughout this thesis.
 
 I thank my fellow M.Tech students and research scholars in the Department of Mining Engineering for stimulating academic discussions, peer review, and camaraderie that made this research journey enriching.
 
@@ -99,15 +99,15 @@ Finally, and most profoundly, I express my heartfelt gratitude to my **parents, 
 
 India is the world's second-largest coal producer, with approximately 92% of national output derived from opencast (OC) mining operations. Despite this strategic importance, mine evaluation in Indian practice remains largely ad hoc — dominated by Net Present Value (NPV) and Internal Rate of Return (IRR) as primary decision metrics, supplemented by binary regulatory clearance gates. No standardised, quantitative, multi-dimensional framework currently exists for evaluating opencast coal mine viability in a manner that is transparent, reproducible, data-validated, and operationally deployable.
 
-This thesis presents the **Composite Mine Evaluation Model (CMEM) v3.0** — a rigorous, data-driven, multi-criteria decision framework that evaluates opencast coal mines across **seven dimensions** using **more than 150 field-measurable input parameters**, producing a unified **Mine Composite Index (MCI)** on a 0–100 scale with letter grades A (Excellent, MCI ≥ 80) through D (High Risk, MCI < 50).
+This thesis presents the **Composite Mine Evaluation Model (MCIF) v3.0** — a rigorous, data-driven, multi-criteria decision framework that evaluates opencast coal mines across **seven dimensions** using **more than 150 field-measurable input parameters**, producing a unified **Mine Composite Index (MCI)** on a 0–100 scale with letter grades A (Excellent, MCI ≥ 80) through D (High Risk, MCI < 50).
 
-**Methodology:** The CMEM adopts an ensemble weight derivation approach that combines three complementary, mathematically rigorous procedures — the Analytic Hierarchy Process (AHP, weight 50%), Shannon's Entropy Weight Method (EWM, weight 30%), and the CRITIC method (weight 20%) — applied to a calibrated dataset of 12 real Indian opencast coal mines. This ensemble approach reduces the method-specific bias inherent in any single weighting procedure. The derived ensemble weights rank **Risk (Safety) as the highest-weight dimension (26.7%)**, followed by Economic (17.0%), Social (13.9%), Geographical (13.0%), Technical (12.7%), Environmental (10.1%), and Governance (6.6%). A calibration factor (CF = 0.87), determined by least-squares minimisation over the training dataset, adjusts the raw composite score to account for qualitative governance and community factors that analytical scoring functions cannot fully capture.
+**Methodology:** The MCIF adopts an ensemble weight derivation approach that combines three complementary, mathematically rigorous procedures — the Analytic Hierarchy Process (AHP, weight 50%), Shannon's Entropy Weight Method (EWM, weight 30%), and the CRITIC method (weight 20%) — applied to a calibrated dataset of 12 real Indian opencast coal mines. This ensemble approach reduces the method-specific bias inherent in any single weighting procedure. The derived ensemble weights rank **Risk (Safety) as the highest-weight dimension (26.7%)**, followed by Economic (17.0%), Social (13.9%), Geographical (13.0%), Technical (12.7%), Environmental (10.1%), and Governance (6.6%). A calibration factor (CF = 0.87), determined by least-squares minimisation over the training dataset, adjusts the raw composite score to account for qualitative governance and community factors that analytical scoring functions cannot fully capture.
 
-**Novel Contributions:** The CMEM introduces three methodological innovations: (i) **Risk (Safety) as a positive quality dimension** — treating geotechnical stability, spontaneous combustion safety, and near-miss management culture as direct drivers of mine investment value, rather than as compliance penalties; (ii) **Governance as a dedicated 7th dimension** (introduced in v3.0), capturing ISO 14001 / ISO 45001 certification status, Directorate General of Mines Safety (DGMS) audit compliance, Environmental, Social, and Governance (ESG) disclosure quality, and regulatory violation tracking; and (iii) seven **engineering subtopic composite scores** that provide operational-level diagnostic information beyond the seven dimension scores, enabling mine management to identify and quantify the highest-leverage improvement investments.
+**Novel Contributions:** The MCIF introduces three methodological innovations: (i) **Risk (Safety) as a positive quality dimension** — treating geotechnical stability, spontaneous combustion safety, and near-miss management culture as direct drivers of mine investment value, rather than as compliance penalties; (ii) **Governance as a dedicated 7th dimension** (introduced in v3.0), capturing ISO 14001 / ISO 45001 certification status, Directorate General of Mines Safety (DGMS) audit compliance, Environmental, Social, and Governance (ESG) disclosure quality, and regulatory violation tracking; and (iii) seven **engineering subtopic composite scores** that provide operational-level diagnostic information beyond the seven dimension scores, enabling mine management to identify and quantify the highest-leverage improvement investments.
 
-**Validation:** The model is validated against four held-out mines — two Indian mines (Northern Coalfields Limited, Singrauli District) and two Australian mines (Coronado Curragh Mine, Queensland; Meandu Coal Mine, Queensland). The CMEM achieves a **Mean Absolute Error (MAE) of 2.53 MCI points** and a **coefficient of determination R² = 0.91**, both within the target thresholds of MAE ≤ 5.0 points and R² ≥ 0.85. All four validation mines are correctly classified by grade. The cross-country validation demonstrates that the model generalises beyond the Indian training context, with the principal cross-country difference manifesting as a systematic Governance gap (mean Indian score 46.6 vs. mean Australian score 80.5).
+**Validation:** The model is validated against four held-out mines — two Indian mines (Northern Coalfields Limited, Singrauli District) and two Australian mines (Coronado Curragh Mine, Queensland; Meandu Coal Mine, Queensland). The MCIF achieves a **Mean Absolute Error (MAE) of 2.53 MCI points** and a **coefficient of determination R² = 0.91**, both within the target thresholds of MAE ≤ 5.0 points and R² ≥ 0.85. All four validation mines are correctly classified by grade. The cross-country validation demonstrates that the model generalises beyond the Indian training context, with the principal cross-country difference manifesting as a systematic Governance gap (mean Indian score 46.6 vs. mean Australian score 80.5).
 
-**Deployment:** The CMEM is implemented as a production-quality **full-stack web application** — a React/Next.js frontend interfacing with a Node.js/Express RESTful backend and MongoDB database. The platform provides real-time mine evaluation across all 150+ parameters, One-At-a-Time (OAT) sensitivity analysis with tornado chart visualisation (51 parameters at ±10%, ±20%, ±30% perturbation), historical prediction management with re-evaluation capability, and PDF report generation.
+**Deployment:** The MCIF is implemented as a production-quality **full-stack web application** — a React/Next.js frontend interfacing with a Node.js/Express RESTful backend and MongoDB database. The platform provides real-time mine evaluation across all 150+ parameters, One-At-a-Time (OAT) sensitivity analysis with tornado chart visualisation (51 parameters at ±10%, ±20%, ±30% perturbation), historical prediction management with re-evaluation capability, and PDF report generation.
 
 **Significance:** The sensitivity analysis identifies Near-Miss Incident Count, NPV, Lost Time Injury Frequency Rate (LTIFR), Slope Factor of Safety (FoS), and Overburden Strip Ratio (OSR) as the five most influential parameters — providing mine management with a quantitative, actionable prioritisation of improvement investments. The validated weight structure delivers a clear policy message: improving safety management quality is the single highest-return lever for enhancing mine investment grade in Indian opencast coal operations.
 
@@ -177,7 +177,7 @@ This thesis presents the **Composite Mine Evaluation Model (CMEM) v3.0** — a r
 
 **Chapter 4 — Model Development** ……………………………………… 43
 
-&nbsp;&nbsp;&nbsp;&nbsp;4.1 Conceptual Architecture of the CMEM …………………………… 43
+&nbsp;&nbsp;&nbsp;&nbsp;4.1 Conceptual Architecture of the MCIF …………………………… 43
 
 &nbsp;&nbsp;&nbsp;&nbsp;4.2 Dimension Scoring Functions ……………………………………… 46
 
@@ -253,13 +253,13 @@ This thesis presents the **Composite Mine Evaluation Model (CMEM) v3.0** — a r
 
 ---
 
-**Appendix A** — CMEM v3.0 Scoring Function Summary and Parameter Reference … 154
+**Appendix A** — MCIF v3.0 Scoring Function Summary and Parameter Reference … 154
 
 **Appendix B** — Weight Derivation Methods: Technical Details ……………………… 158
 
 **Appendix C** — Web Application Technology Stack ………………………………… 162
 
-**Appendix D** — CMEM v3.0 Ensemble Weight Derivation: Complete AHP Pairwise Matrix … 164
+**Appendix D** — MCIF v3.0 Ensemble Weight Derivation: Complete AHP Pairwise Matrix … 164
 
 **Appendix E** — Opencast Mine Evaluation Factor Tables (Source Document) ……… 166
 
@@ -278,7 +278,7 @@ This thesis presents the **Composite Mine Evaluation Model (CMEM) v3.0** — a r
 | CI | Consistency Index |
 | CIL | Coal India Limited |
 | CIMVAL | Canadian Institute of Mining Valuation Code |
-| CMEM | Composite Mine Evaluation Model |
+| MCIF | Composite Mine Evaluation Model |
 | CPCB | Central Pollution Control Board |
 | CR | Consistency Ratio |
 | CRITIC | Criteria Importance Through Intercriteria Correlation |
@@ -357,7 +357,7 @@ The IIT Kharagpur Mining Engineering research tradition has long contributed to 
 
 The primary objectives of this research are:
 
-1. **To develop** a comprehensive, analytical Composite Mine Evaluation Model (CMEM) that scores opencast coal mines across 7 dimensions using 150+ field-measurable parameters.
+1. **To develop** a comprehensive, analytical Composite Mine Evaluation Model (MCIF) that scores opencast coal mines across 7 dimensions using 150+ field-measurable parameters.
 
 2. **To derive** dimension weights using an ensemble of complementary weight-derivation procedures (see Appendix B) to ensure robustness against any single method's limitations.
 
@@ -365,7 +365,7 @@ The primary objectives of this research are:
 
 4. **To incorporate** a Governance dimension (v3.0) capturing ISO 14001/45001 certification, DGMS audit compliance, Environmental, Social, and Governance (ESG) disclosure quality, and regulatory violation tracking.
 
-5. **To validate** the CMEM against 4 held-out mines (2 Indian, 2 Australian) and demonstrate prediction accuracy meeting MAE ≤ 5.0 points and R² ≥ 0.85.
+5. **To validate** the MCIF against 4 held-out mines (2 Indian, 2 Australian) and demonstrate prediction accuracy meeting MAE ≤ 5.0 points and R² ≥ 0.85.
 
 6. **To deploy** the model as a full-stack web application providing real-time mine evaluation, sensitivity analysis, historical record management, and thesis-grade visualization.
 
@@ -377,7 +377,7 @@ This thesis covers:
 - **Parameter scope:** 150+ parameters across 8 core sections and 7 engineering subtopic sections
 - **Validation:** 4 held-out validation mines (never included in weight derivation training)
 - **Software:** Full-stack web application (Next.js frontend + Node.js backend + MongoDB)
-- **Version:** CMEM v3.0 (adds Governance as 7th dimension)
+- **Version:** MCIF v3.0 (adds Governance as 7th dimension)
 
 ---
 
@@ -385,7 +385,7 @@ This thesis covers:
 
 ## 2.1 Overview
 
-A systematic review of the literature on mine evaluation, multi-criteria decision analysis (MCDA), and composite index construction forms the foundation of the present work. This chapter traces the evolution of mine evaluation frameworks from purely financial approaches toward integrated multi-dimensional models, identifies the key mathematical tools employed in the field, and delineates the specific gaps that the present Composite Mine Evaluation Model (CMEM) is designed to address.
+A systematic review of the literature on mine evaluation, multi-criteria decision analysis (MCDA), and composite index construction forms the foundation of the present work. This chapter traces the evolution of mine evaluation frameworks from purely financial approaches toward integrated multi-dimensional models, identifies the key mathematical tools employed in the field, and delineates the specific gaps that the present Composite Mine Evaluation Model (MCIF) is designed to address.
 
 ## 2.2 Evolution of Mine Evaluation Frameworks
 
@@ -413,23 +413,23 @@ The limitations of purely financial and binary regulatory approaches motivated t
 
 **Gholamnejad and Kasmaei (2021)** applied a combined AHP-CRITIC (Criteria Importance Through Intercriteria Correlation) methodology to the evaluation of opencast mine development alternatives, demonstrating that the ordinal ranking of alternatives was consistent across both methods — a finding that supports the robustness of ensemble weight derivation [6]. Their dataset comprised Iranian copper mines and did not extend to coal-specific parameters (stripping ratio economics, spontaneous combustion risk, DGMS regulatory context).
 
-**CIL Mine Planning Guidelines (2022)** prescribe a scoring framework for Indian opencast coal mines that covers technical, environmental, and financial criteria with fixed expert-assigned weights [7]. This document represents the closest existing industry standard to a composite evaluation model for the CMEM's target context. Its principal limitation is that weights are assigned by expert consensus without formal derivation or consistency testing, and no held-out validation of predictive accuracy is reported.
+**CIL Mine Planning Guidelines (2022)** prescribe a scoring framework for Indian opencast coal mines that covers technical, environmental, and financial criteria with fixed expert-assigned weights [7]. This document represents the closest existing industry standard to a composite evaluation model for the MCIF's target context. Its principal limitation is that weights are assigned by expert consensus without formal derivation or consistency testing, and no held-out validation of predictive accuracy is reported.
 
 ## 2.3 Multi-Criteria Decision Analysis (MCDA) Methodology
 
 ### 2.3.1 Theoretical Framework
 
-MCDA provides the formal mathematical framework for synthesising multiple, incommensurable criteria into a single composite score. The general additive aggregation model — used as the foundation of the CMEM — takes the form:
+MCDA provides the formal mathematical framework for synthesising multiple, incommensurable criteria into a single composite score. The general additive aggregation model — used as the foundation of the MCIF — takes the form:
 
 **Score = Σᵢ wᵢ × Sᵢ**
 
 where wᵢ is the normalised weight of criterion i (Σwᵢ = 1), and Sᵢ is the normalised score of criterion i ∈ [0, 100]. This linear additive model satisfies the requirements of mutual preferential independence and is interpretable, auditable, and computationally tractable — properties essential for a regulatory and investment decision-support context [8].
 
-Alternative MCDA formulations — including TOPSIS, VIKOR, ELECTRE, and PROMETHEE — have been applied in the mining literature [5, 6]. These methods offer advantages in handling rank reversal and non-compensatory preferences but sacrifice interpretability: a single composite score from TOPSIS does not directly decompose into dimension contributions in a manner that guides operational improvement. The additive linear model was selected for CMEM precisely because it enables the Improvement Roadmap output — quantifying how much MCI gain is achievable by improving each dimension.
+Alternative MCDA formulations — including TOPSIS, VIKOR, ELECTRE, and PROMETHEE — have been applied in the mining literature [5, 6]. These methods offer advantages in handling rank reversal and non-compensatory preferences but sacrifice interpretability: a single composite score from TOPSIS does not directly decompose into dimension contributions in a manner that guides operational improvement. The additive linear model was selected for MCIF precisely because it enables the Improvement Roadmap output — quantifying how much MCI gain is achievable by improving each dimension.
 
 ### 2.3.2 Normalisation Approaches
 
-Score normalisation — transforming raw parameter values measured in diverse units (₹ Crore, %, km, tCO₂e/t) into a common [0, 100] scale — is a critical step in any MCDA model. The CMEM employs a **benchmark-range normalisation** approach:
+Score normalisation — transforming raw parameter values measured in diverse units (₹ Crore, %, km, tCO₂e/t) into a common [0, 100] scale — is a critical step in any MCDA model. The MCIF employs a **benchmark-range normalisation** approach:
 
 Sᵢ = clamp( (xᵢ − x_min) / (x_max − x_min) × 100 )
 
@@ -453,7 +453,7 @@ eⱼ = −(1/ln m) Σᵢ pᵢⱼ ln(pᵢⱼ)
 
 The divergence (information utility) dⱼ = 1 − eⱼ captures the relative spread of scores across alternatives for criterion j, and the normalised weight wⱼ = dⱼ / Σⱼ dⱼ assigns higher weight to dimensions that exhibit greater differentiation across mines — precisely the dimensions that are most useful for discriminating between alternatives.
 
-EWM has been applied in the mining context by Abdollahisharif et al. (2012) [5] and is particularly well-suited to the CMEM's objective of identifying the dimensions that best discriminate between Indian OC coal mines in the present dataset.
+EWM has been applied in the mining context by Abdollahisharif et al. (2012) [5] and is particularly well-suited to the MCIF's objective of identifying the dimensions that best discriminate between Indian OC coal mines in the present dataset.
 
 ### 2.4.3 CRITIC Method (Criteria Importance Through Intercriteria Correlation)
 
@@ -461,7 +461,7 @@ Diakoulaki, Mavrotas, and Papayannakis (1995) proposed the CRITIC method, which 
 
 Cⱼ = σⱼ × Σₖ (1 − rⱼₖ)
 
-where σⱼ is the standard deviation of criterion j's normalised scores and rⱼₖ is the Pearson correlation coefficient between criteria j and k. CRITIC assigns lower weight to criteria that covary strongly with others, preventing double-counting of correlated information. This is particularly relevant in the CMEM context, where Economic and Technical dimensions share informational content through the OSR-BESR relationship.
+where σⱼ is the standard deviation of criterion j's normalised scores and rⱼₖ is the Pearson correlation coefficient between criteria j and k. CRITIC assigns lower weight to criteria that covary strongly with others, preventing double-counting of correlated information. This is particularly relevant in the MCIF context, where Economic and Technical dimensions share informational content through the OSR-BESR relationship.
 
 ### 2.4.4 Ensemble Weight Derivation — Rationale
 
@@ -483,21 +483,21 @@ Bishop (1955) established the simplified method of slices for circular failure a
 
 β = (FoS_mean − 1.0) / σ_FoS
 
-This probabilistic formulation — subsequently known as the Hasofer-Lind Reliability Index — directly maps to a Probability of Failure (POF) via the standard normal CDF: POF = Φ(−β) [13]. The CMEM adopts β as a derived safety metric reported alongside the MCI, providing a probabilistic complement to the deterministic FoS scoring.
+This probabilistic formulation — subsequently known as the Hasofer-Lind Reliability Index — directly maps to a Probability of Failure (POF) via the standard normal CDF: POF = Φ(−β) [13]. The MCIF adopts β as a derived safety metric reported alongside the MCI, providing a probabilistic complement to the deterministic FoS scoring.
 
 ### 2.5.2 Near-Miss Reporting and the Heinrich Ratio
 
-Heinrich (1931) proposed the now-classic accident triangle: for every fatal accident, approximately 10 serious injuries and 300 near-misses occur — a ratio subsequently validated in numerous industrial safety studies [14]. In the CMEM, near-miss incident count per year is used as a leading safety indicator, weighted at 8% of the Risk dimension's hazard score. Its sensitivity is the highest of all 51 parameters in OAT analysis (see Section 6.3), confirming its value as an early warning indicator of systemic safety deterioration.
+Heinrich (1931) proposed the now-classic accident triangle: for every fatal accident, approximately 10 serious injuries and 300 near-misses occur — a ratio subsequently validated in numerous industrial safety studies [14]. In the MCIF, near-miss incident count per year is used as a leading safety indicator, weighted at 8% of the Risk dimension's hazard score. Its sensitivity is the highest of all 51 parameters in OAT analysis (see Section 6.3), confirming its value as an early warning indicator of systemic safety deterioration.
 
 ### 2.5.3 Spontaneous Combustion Risk
 
-The Crossing Point Temperature (CPT) — the temperature at which the rate of heat absorption by coal equals the rate of heat release from oxidation — is the standard field index for spontaneous combustion susceptibility in Indian mining practice, as adopted by DGMS and CIL guidelines. Coal with CPT < 140°C is classified as highly susceptible; CPT > 175°C is considered safe. The CMEM incorporates CPT in both the Risk dimension (as a hazard component) and the Coal Quality subtopic score (as a safety quality marker).
+The Crossing Point Temperature (CPT) — the temperature at which the rate of heat absorption by coal equals the rate of heat release from oxidation — is the standard field index for spontaneous combustion susceptibility in Indian mining practice, as adopted by DGMS and CIL guidelines. Coal with CPT < 140°C is classified as highly susceptible; CPT > 175°C is considered safe. The MCIF incorporates CPT in both the Risk dimension (as a hazard component) and the Coal Quality subtopic score (as a safety quality marker).
 
 ## 2.6 Governance and Environmental, Social, and Governance (ESG) Considerations
 
 The emergence of Environmental, Social, and Governance (ESG) as an investment decision framework has increasingly influenced mining sector evaluation. India's Securities and Exchange Board of India (SEBI) mandated Business Responsibility and Sustainability Reporting (BRSR) for the top 1,000 listed companies from FY2022-23 [15], creating a formal disclosure requirement for mining companies with listed equity. ISO 14001 (Environmental Management Systems) [16] and ISO 45001 (Occupational Health and Safety Management Systems) [17] provide internationally benchmarked standards for mining governance.
 
-No prior composite mine evaluation model for the Indian sector includes a formal Governance dimension. The CMEM v3.0 addresses this gap by incorporating six governance parameters — ISO 14001 status, ISO 45001 status, regulatory violations per year, ESG disclosure score, critical audit findings, and DGMS compliance percentage — into a dedicated 7th dimension with a 6.6% ensemble weight.
+No prior composite mine evaluation model for the Indian sector includes a formal Governance dimension. The MCIF v3.0 addresses this gap by incorporating six governance parameters — ISO 14001 status, ISO 45001 status, regulatory violations per year, ESG disclosure score, critical audit findings, and DGMS compliance percentage — into a dedicated 7th dimension with a 6.6% ensemble weight.
 
 ## 2.7 Valuation Methods in the Mining Context
 
@@ -507,13 +507,13 @@ The CIMVAL Code (CIM, 2019) provides the internationally recognised standard for
 2. **Market Approach** (EV/Resource multiples): For exploration-stage or early development assets without reliable cash flow forecasts.
 3. **Cost Approach** (Replacement cost / asset value): For non-producing mines where economic extraction is uncertain.
 
-The CMEM integrates CIMVAL-aligned valuation method selection as an output, automatically recommending the appropriate valuation approach based on the mine's lifecycle stage and MCI grade, including the specification of counter-conditions when the primary method should be supplemented or replaced.
+The MCIF integrates CIMVAL-aligned valuation method selection as an output, automatically recommending the appropriate valuation approach based on the mine's lifecycle stage and MCI grade, including the specification of counter-conditions when the primary method should be supplemented or replaced.
 
 ## 2.8 Identified Gaps and Research Contributions
 
 The foregoing review identifies the following gaps in the existing literature and establishes the contributions of the present work:
 
-| Gap in Literature | CMEM v3.0 Contribution |
+| Gap in Literature | MCIF v3.0 Contribution |
 |------------------|------------------------|
 | No ensemble weight derivation in mine evaluation | Combines AHP (50%), EWM (30%), CRITIC (20%) into one robust weight vector |
 | Risk treated as penalty, not quality dimension | Risk scored as Safety Quality (100 − hazard); positive weight = 26.7% |
@@ -530,7 +530,7 @@ The foregoing review identifies the following gaps in the existing literature an
 
 ## 3.1 Data Collection Strategy
 
-A systematic data collection protocol was adopted to assemble the mine-level parameter dataset required for CMEM calibration and validation. Data were sourced exclusively from publicly available documents to ensure reproducibility and transparency:
+A systematic data collection protocol was adopted to assemble the mine-level parameter dataset required for MCIF calibration and validation. Data were sourced exclusively from publicly available documents to ensure reproducibility and transparency:
 
 1. **CIL Subsidiary Annual Reports** (FY 2022-23 and FY 2023-24): Northern Coalfields Limited (NCL), South Eastern Coalfields Limited (SECL), and Central Coalfields Limited (CCL) annual reports provided production volumes, financial performance, workforce safety statistics, CSR expenditure, and environmental compliance summaries.
 
@@ -578,19 +578,19 @@ Eight producing-stage Indian OC coal mines were selected for the training set. T
 
 ### 3.2.1 Key Observations from Training Data
 
-**SECL Korba Cluster (MINE_002, MINE_003, MINE_010):** The three South Eastern Coalfields mines in the Korba coalfield, Chhattisgarh, possess the most favourable economics in the training set. Gevra OCP, India's largest opencast coal mine by volume (49.0 MTY), operates with an OSR of only 1.08 BCM:tonne — effectively the lowest stripping burden among CIL subsidiary mines — resulting in an exceptional IRR of 38%. The cluster's high NPV and low OSR anchor the upper end of the economic scoring range and establish the benchmark for "Grade A economic performance" in the CMEM scoring functions.
+**SECL Korba Cluster (MINE_002, MINE_003, MINE_010):** The three South Eastern Coalfields mines in the Korba coalfield, Chhattisgarh, possess the most favourable economics in the training set. Gevra OCP, India's largest opencast coal mine by volume (49.0 MTY), operates with an OSR of only 1.08 BCM:tonne — effectively the lowest stripping burden among CIL subsidiary mines — resulting in an exceptional IRR of 38%. The cluster's high NPV and low OSR anchor the upper end of the economic scoring range and establish the benchmark for "Grade A economic performance" in the MCIF scoring functions.
 
 **NCL Singrauli Cluster (MINE_004, MINE_005, MINE_006, MINE_009):** The four Northern Coalfields mines in Singrauli District share broadly similar geological characteristics — predominantly Grade F/G coal (GCV 3,750–3,900 kcal/kg), OSR range 2.8–3.8 BCM:t — providing a controlled within-cluster comparison of operational efficiency differences. The cluster exhibits a 1.6-fold variation in production scale (10.0–25.0 MTY) and a corresponding spread in NPV (₹8,200–₹22,000 crore), enabling the model to separate scale effects from operational quality effects.
 
 **Kuju OCP (MINE_001):** As the smallest mine in the training set (1.30 MTY, data year 2011), Kuju OCP establishes the lower end of the production scale normalisation and introduces temporal variability that tests model robustness to older operational data. Its Grade C final MCI reflects its small scale, older HEMM fleet, and limited governance infrastructure.
 
-> **[Figure 3.1 — Bar chart of Annual Production (MTY) for all 8 training mines. Insert from CMEM web application's Mine Data page.]**
+> **[Figure 3.1 — Bar chart of Annual Production (MTY) for all 8 training mines. Insert from MCIF web application's Mine Data page.]**
 
-> **[Figure 3.2 — Scatter plot of OSR vs IRR for all 8 training mines, showing the strong inverse relationship (lower OSR → higher IRR) that motivates the high economic dimension weight. Insert from CMEM application.]**
+> **[Figure 3.2 — Scatter plot of OSR vs IRR for all 8 training mines, showing the strong inverse relationship (lower OSR → higher IRR) that motivates the high economic dimension weight. Insert from MCIF application.]**
 
 ## 3.3 Validation Dataset — 4 Mines
 
-Four mines were withheld from all training, weight derivation, and scoring function calibration procedures. Their actual MCI scores were assessed by independent expert evaluators — using the same seven-dimension framework but from raw public data — prior to CMEM being applied, enabling a fully blind comparison. The inclusion of two Australian Queensland mines was deliberate: it tests the geographical generalisability of a model calibrated exclusively on Indian data.
+Four mines were withheld from all training, weight derivation, and scoring function calibration procedures. Their actual MCI scores were assessed by independent expert evaluators — using the same seven-dimension framework but from raw public data — prior to MCIF being applied, enabling a fully blind comparison. The inclusion of two Australian Queensland mines was deliberate: it tests the geographical generalisability of a model calibrated exclusively on Indian data.
 
 ### Table 3.3: Validation Mine Summary
 
@@ -617,11 +617,11 @@ Curragh Mine, operated by Coronado Global Resources at Blackwater, Queensland, i
 
 Meandu Coal Mine, operated by Stanwell Corporation at Tarong, Queensland, is a captive thermal coal supply operation for the adjacent Tarong and Tarong North power stations. The mine's defining geographical advantage — zero effective rail distance and negligible logistics cost (coal is conveyed directly to the power station's bunkers) — produces a near-maximum geographical score. Despite its modest production scale of 4.5 MTY and lower economic score (smaller NPV, captive pricing below export parity), the mine's excellent safety record (LTIFR = 3.2, equivalent regulatory compliance = 98%), strong governance (full environmental management certification), and unmatched logistics position produce an actual MCI of 70.1 (Grade B).
 
-> **[Figure 3.3 — Radar (spider) chart comparing all 4 validation mine dimension score profiles side by side. Insert from CMEM Compare page.]**
+> **[Figure 3.3 — Radar (spider) chart comparing all 4 validation mine dimension score profiles side by side. Insert from MCIF Compare page.]**
 
 ## 3.4 Parameter Inventory
 
-The CMEM employs **150+ parameters** organised into 8 core input sections and 7 engineering subtopic sections. The full parameter documentation is provided in Appendix A; a summary of coverage by section is presented below.
+The MCIF employs **150+ parameters** organised into 8 core input sections and 7 engineering subtopic sections. The full parameter documentation is provided in Appendix A; a summary of coverage by section is presented below.
 
 ### Table 3.4: Parameter Coverage by Section
 
@@ -650,9 +650,9 @@ The distinction between core and subtopic parameters is significant: core parame
 
 # CHAPTER 4: MODEL DEVELOPMENT
 
-## 4.1 Conceptual Architecture of the CMEM
+## 4.1 Conceptual Architecture of the MCIF
 
-The CMEM is structured as a five-stage analytical pipeline that transforms 150+ raw mine parameters into a unified Mine Composite Index (MCI), a letter grade, an improvement roadmap, and a valuation method recommendation. The architecture is depicted schematically below:
+The MCIF is structured as a five-stage analytical pipeline that transforms 150+ raw mine parameters into a unified Mine Composite Index (MCI), a letter grade, an improvement roadmap, and a valuation method recommendation. The architecture is depicted schematically below:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -760,7 +760,7 @@ Annual working days (score = clamp((Days − 240) / (340 − 240) × 100)) captu
 
 ### 4.2.6 Governance Dimension Score (S_Gov)
 
-*Introduced in CMEM v3.0 — this dimension has no equivalent in any prior Indian mine evaluation framework.*
+*Introduced in MCIF v3.0 — this dimension has no equivalent in any prior Indian mine evaluation framework.*
 
 **S_Gov = 0.25·s_ISO45001 + 0.20·s_ISO14001 + 0.20·s_Violations + 0.15·s_ESG + 0.12·s_DGMS + 0.08·s_Audit**
 
@@ -776,7 +776,7 @@ Regulatory violations per year are scored as s_Violations = max(0, 100 − Viola
 
 ### 4.2.7 Risk Dimension Score (S_Risk)
 
-The Risk dimension in CMEM v3.0 represents the most significant departure from conventional MCDA practice in mining. Rather than treating risk as a deduction or multiplicative penalty applied to the overall score, the CMEM formulates Risk as **Safety Quality** — a positive measure of how well the mine manages its hazard portfolio.
+The Risk dimension in MCIF v3.0 represents the most significant departure from conventional MCDA practice in mining. Rather than treating risk as a deduction or multiplicative penalty applied to the overall score, the MCIF formulates Risk as **Safety Quality** — a positive measure of how well the mine manages its hazard portfolio.
 
 **S_Risk = 100 − Hazard_Score**
 
@@ -826,7 +826,7 @@ The 50% weight on AHP reflects the primacy of domain expertise in a field where 
 | Governance | 3.5 | 9.8 | 6.4 | **6.6** | 7 |
 | **Total** | **100.0** | **100.0** | **100.0** | **100.0** | — |
 
-> **[Figure 4.1 — Grouped bar chart of weights by dimension for all three individual methods and the ensemble. Insert from CMEM Workflow page weight explanation section.]**
+> **[Figure 4.1 — Grouped bar chart of weights by dimension for all three individual methods and the ensemble. Insert from MCIF Workflow page weight explanation section.]**
 
 ### 4.3.3 Convergence Validation and Consistency Check
 
@@ -889,7 +889,7 @@ A positive viability margin confirms that the operating stripping ratio is below
 
 ## 4.5 Seven Engineering Subtopic Composite Scores
 
-In addition to the seven dimension scores, the CMEM computes seven **engineering subtopic composite scores** that provide deeper diagnostic information at the operational subsystem level. These subtopic scores are mapped to their parent dimension(s) through the ensemble weight structure, enabling the quantification of each subtopic's effective contribution to the overall MCI.
+In addition to the seven dimension scores, the MCIF computes seven **engineering subtopic composite scores** that provide deeper diagnostic information at the operational subsystem level. These subtopic scores are mapped to their parent dimension(s) through the ensemble weight structure, enabling the quantification of each subtopic's effective contribution to the overall MCI.
 
 ### Table 4.5: Subtopic Composite Score Formulas and MCI Impact Pathway
 
@@ -909,11 +909,11 @@ In addition to the seven dimension scores, the CMEM computes seven **engineering
 
 **Coal Quality** is the most cross-dimensional subtopic (effective weight 5.8%), feeding three dimensions — Technical (GCV, Ash), Environmental (Sulphur/SO₂ risk), and Risk (CPT/spontaneous combustion). This multi-dimensional penetration makes coal quality improvement (e.g., washery installation) a particularly high-leverage intervention.
 
-> **[Figure 4.2 — Bar chart of effective MCI weight by subtopic, highlighting Infrastructure (8.6%) and Coal Quality (5.8%) as top levers. Insert from CMEM ResultPanel Subtopic Impact Table.]**
+> **[Figure 4.2 — Bar chart of effective MCI weight by subtopic, highlighting Infrastructure (8.6%) and Coal Quality (5.8%) as top levers. Insert from MCIF ResultPanel Subtopic Impact Table.]**
 
 ## 4.6 Valuation Method Selection (CIMVAL Code Alignment)
 
-The CMEM includes an automated **CIMVAL Code-aligned valuation method recommendation** based on the mine's lifecycle stage (Producing / Development / Exploration) and MCI grade. This feature ensures that CMEM outputs are directly actionable for investment decision-making.
+The MCIF includes an automated **CIMVAL Code-aligned valuation method recommendation** based on the mine's lifecycle stage (Producing / Development / Exploration) and MCI grade. This feature ensures that MCIF outputs are directly actionable for investment decision-making.
 
 ### Table 4.6: Valuation Method Selection Matrix (CIMVAL 2019)
 
@@ -924,7 +924,7 @@ The CMEM includes an automated **CIMVAL Code-aligned valuation method recommenda
 | Development | Any | DCF + Real Options Valuation | All options contractually committed → Pure DCF ± 15% |
 | Exploration | Any | EV / Resource Multiple (Market Approach) | No peer comparables → Real Options |
 
-This integration of CIMVAL Code guidance into the CMEM output ensures that the model serves not just as an evaluation tool but as a complete decision-support framework that connects mine quality assessment to investment valuation practice.
+This integration of CIMVAL Code guidance into the MCIF output ensures that the model serves not just as an evaluation tool but as a complete decision-support framework that connects mine quality assessment to investment valuation practice.
 
 ---
 
@@ -932,7 +932,7 @@ This integration of CIMVAL Code guidance into the CMEM output ensures that the m
 
 ## 5.1 System Architecture
 
-The CMEM is deployed as a full-stack web application following a three-tier client-server-database architecture. This deployment strategy was chosen to maximise accessibility, enable real-time evaluation, and support multi-user concurrent access — requirements that cannot be met by a spreadsheet or standalone desktop application.
+The MCIF is deployed as a full-stack web application following a three-tier client-server-database architecture. This deployment strategy was chosen to maximise accessibility, enable real-time evaluation, and support multi-user concurrent access — requirements that cannot be met by a spreadsheet or standalone desktop application.
 
 ### Table 5.1: Technology Stack
 
@@ -945,7 +945,7 @@ The CMEM is deployed as a full-stack web application following a three-tier clie
 | Frontend | Visualisation | Recharts | 2.x |
 | Backend | Runtime | Node.js | 20.x |
 | Backend | API Framework | Express.js | 4.x |
-| Backend | CMEM Engine | Pure JavaScript | — |
+| Backend | MCIF Engine | Pure JavaScript | — |
 | Database | Document Store | MongoDB | 7.0 |
 | Database | ODM | Mongoose | 8.x |
 
@@ -961,7 +961,7 @@ The CMEM is deployed as a full-stack web application following a three-tier clie
 |:------:|----------|---------|
 | GET | /api/health | Server and MongoDB connection status |
 | GET | /api/stats | Aggregate prediction statistics |
-| POST | /api/predict | Execute CMEM engine; save result; compare if validation mine |
+| POST | /api/predict | Execute MCIF engine; save result; compare if validation mine |
 | GET | /api/predict/from-db/:mine_id | Load mine from database and compute MCI |
 | GET | /api/mines | All 12 reference mines |
 | GET | /api/mines/validate | Validation mines only |
@@ -974,7 +974,7 @@ The CMEM is deployed as a full-stack web application following a three-tier clie
 | DELETE | /api/history/:id | Delete prediction record |
 | POST | /api/sensitivity | OAT sensitivity analysis |
 
-### 5.2.2 CMEM Scoring Engine
+### 5.2.2 MCIF Scoring Engine
 
 The core analytical model is implemented as a pure function `computeMCI(params)` in `utils/scoring.js`. Its execution sequence is:
 
@@ -1010,11 +1010,11 @@ Two primary MongoDB collections support the application:
 | /sensitivity | Sensitivity Analysis | Tornado chart (OAT ±10/20/30%); dimension aggregation |
 | /history | History | All predictions; edit, re-evaluate, export PDF |
 | /parameters | Parameter Reference | 150+ parameter documentation with formulas |
-| /workflow | Workflow Explanation | 6-step CMEM pipeline walkthrough |
+| /workflow | Workflow Explanation | 6-step MCIF pipeline walkthrough |
 | /data | Mine Data | 12 reference mines; click to evaluate |
 | /report/[id] | PDF Report | Printable single-mine evaluation report |
 
-> **[Figure 5.2 — Screenshot of the Predict page showing the 8-section input form with the MCI gauge result panel on the right. Insert from CMEM application.]**
+> **[Figure 5.2 — Screenshot of the Predict page showing the 8-section input form with the MCI gauge result panel on the right. Insert from MCIF application.]**
 
 ### 5.3.2 ResultPanel Component
 
@@ -1031,9 +1031,9 @@ The `ResultPanel` React component is the central visualization element, rendered
 9. **Input Parameters Summary** — compact grouped table of all key inputs
 10. **Decision Summary** — strengths, weaknesses, investment recommendation text
 
-> **[Figure 5.3 — Screenshot of the ResultPanel showing MCI gauge, dimension breakdown bars, and radar chart for Gevra OCP. Insert from CMEM application.]**
+> **[Figure 5.3 — Screenshot of the ResultPanel showing MCI gauge, dimension breakdown bars, and radar chart for Gevra OCP. Insert from MCIF application.]**
 
-> **[Figure 5.4 — Screenshot of the Subtopic Impact Table showing Infrastructure (8.6%) and Coal Quality (5.8%) as highest-impact levers. Insert from CMEM ResultPanel.]**
+> **[Figure 5.4 — Screenshot of the Subtopic Impact Table showing Infrastructure (8.6%) and Coal Quality (5.8%) as highest-impact levers. Insert from MCIF ResultPanel.]**
 
 ## 5.4 Data Flow Pipeline
 
@@ -1082,7 +1082,7 @@ The **tornado chart** ranks parameters by their absolute swing |ΔMCI(+20%)| + |
 
 Sensitivity results are aggregated by dimension by summing the |ΔMCI| values of all parameters belonging to each dimension, producing a dimension-level sensitivity index. This index provides a higher-level perspective on which dimensions drive MCI variability, complementing the parameter-level tornado chart.
 
-> **[Figure 5.5 — Screenshot of the Sensitivity Analysis page showing the Tornado chart for Rajmahal OCP with Near-Miss Count as the most sensitive parameter. Insert from CMEM application.]**
+> **[Figure 5.5 — Screenshot of the Sensitivity Analysis page showing the Tornado chart for Rajmahal OCP with Near-Miss Count as the most sensitive parameter. Insert from MCIF application.]**
 
 ---
 
@@ -1092,7 +1092,7 @@ Sensitivity results are aggregated by dimension by summing the |ΔMCI| values of
 
 ### 6.1.1 Predicted versus Actual MCI — Validation Mines
 
-The primary validation of the CMEM is conducted on four held-out mines — two Indian (NCL) and two Australian (Queensland) — whose actual MCI scores were assessed independently before CMEM was applied. Table 6.1 presents the complete validation results.
+The primary validation of the MCIF is conducted on four held-out mines — two Indian (NCL) and two Australian (Queensland) — whose actual MCI scores were assessed independently before MCIF was applied. Table 6.1 presents the complete validation results.
 
 ### Table 6.1: Validation Results — Predicted vs. Actual MCI
 
@@ -1117,15 +1117,15 @@ The primary validation of the CMEM is conducted on four held-out mines — two I
 
 All four validation mines are correctly graded, and all predicted MCI values fall within the ±2.53-point confidence band (one MAE on each side of the predicted value). The RMSE of 2.60 points, marginally higher than MAE (2.53 pts), indicates that errors are uniformly distributed without severe outliers — a desirable property in a mine evaluation model where any single large error could lead to a catastrophic investment misclassification.
 
-> **[Figure 6.1 — Scatter plot: Predicted MCI (x-axis) vs. Actual MCI (y-axis) for all 4 validation mines, with the 45° perfect prediction line and ±2.53 pt confidence bands. Insert from CMEM Compare page.]**
+> **[Figure 6.1 — Scatter plot: Predicted MCI (x-axis) vs. Actual MCI (y-axis) for all 4 validation mines, with the 45° perfect prediction line and ±2.53 pt confidence bands. Insert from MCIF Compare page.]**
 
-> **[Figure 6.2 — Bar chart: Predicted vs. Actual MCI side-by-side for all 4 validation mines, with error magnitude labels. Insert from CMEM Compare or Validation page.]**
+> **[Figure 6.2 — Bar chart: Predicted vs. Actual MCI side-by-side for all 4 validation mines, with error magnitude labels. Insert from MCIF Compare or Validation page.]**
 
 ### 6.1.2 Systematic Over-Prediction in Australian Mines
 
 A consistent pattern of slight over-prediction is observed for the two Australian mines (+2.3 pts for Curragh, +2.7 pts for Meandu). Two factors contribute to this systematic bias:
 
-1. **DGMS Compliance Benchmark:** The CMEM's DGMS compliance scoring is calibrated to the Indian Coal Mines Regulations (CMR) 2017 framework. Australian mines are assessed under the Queensland Coal Mining Safety and Health Act, which employs different audit metrics. The CMEM applies India-calibrated benchmark scores, potentially over-estimating the governance and risk scores of Australian mines relative to their actual performance on Indian-equivalent metrics.
+1. **DGMS Compliance Benchmark:** The MCIF's DGMS compliance scoring is calibrated to the Indian Coal Mines Regulations (CMR) 2017 framework. Australian mines are assessed under the Queensland Coal Mining Safety and Health Act, which employs different audit metrics. The MCIF applies India-calibrated benchmark scores, potentially over-estimating the governance and risk scores of Australian mines relative to their actual performance on Indian-equivalent metrics.
 
 2. **Logistics Cost Normalisation:** The logistics cost scoring is calibrated in Indian Rupees per tonne (₹/t). Meandu's captive mine logistics (near-zero cost) and Curragh's export logistics (higher AUD-denominated costs) required currency normalisation assumptions that introduce uncertainty not present for Indian mines.
 
@@ -1148,7 +1148,7 @@ Despite this systematic bias, the magnitude of over-prediction (2.3–2.7 pts) f
 
 The largest per-dimension errors occur in **Governance** and **Risk (Safety)** — both dimensions that rely on qualitative or partially-observed data (ISO certification status, near-miss records, DGMS audit scores) sourced from public documents. These dimensions are inherently more uncertain than fully quantitative dimensions such as Economic (NPV, IRR) and Geographical (rail distance, logistics cost), where the data quality is higher. This finding highlights a key future improvement: direct field data collection for governance and safety metrics would substantially reduce prediction error.
 
-> **[Figure 6.3 — Error bar chart: per-dimension prediction error (|Δ pts|) for all 4 validation mines. Insert from CMEM Comparison Card (Per-Dimension Error Breakdown table).]**
+> **[Figure 6.3 — Error bar chart: per-dimension prediction error (|Δ pts|) for all 4 validation mines. Insert from MCIF Comparison Card (Per-Dimension Error Breakdown table).]**
 
 ## 6.2 Full Dimension Score Analysis
 
@@ -1176,7 +1176,7 @@ The largest per-dimension errors occur in **Governance** and **Risk (Safety)** �
 | Curragh Mine | 88.2 | 92.3 | 71.4 | 84.5 | 68.4 | 72.5 | 82.4 | **76.1** | **B** |
 | Meandu Coal Mine | 72.4 | 68.5 | 75.8 | 86.2 | 98.2 | 88.5 | 84.6 | **72.8** | **B** |
 
-> **[Figure 6.4 — Grouped bar chart showing all 7 dimension scores for all 12 mines (8 training + 4 validation), colour-coded by dimension. Insert from CMEM Mine Data or Results page.]**
+> **[Figure 6.4 — Grouped bar chart showing all 7 dimension scores for all 12 mines (8 training + 4 validation), colour-coded by dimension. Insert from MCIF Mine Data or Results page.]**
 
 ### 6.2.2 Key Analytical Findings from Dimension Score Analysis
 
@@ -1226,9 +1226,9 @@ Sensitivity analysis was conducted using Rajmahal OCP as the base case (the appl
 | 9 | Blended Gross Calorific Value (GCV) | Technical | +1.8 | −1.8 | **3.6** | Coal Quality |
 | 10 | Payback Period | Economic | −1.7 | +1.7 | **3.4** | — |
 
-> **[Figure 6.5 — Tornado chart showing the top 10 most sensitive parameters with horizontal bars representing ΔMCI at ±20% perturbation. Insert from CMEM Sensitivity page.]**
+> **[Figure 6.5 — Tornado chart showing the top 10 most sensitive parameters with horizontal bars representing ΔMCI at ±20% perturbation. Insert from MCIF Sensitivity page.]**
 
-**Near-Miss Count** (Rank 1, swing = 7.6 pts) is the most influential parameter in the entire model. A 20% increase in near-miss incidents per year produces a 3.8-point MCI reduction — the largest single-parameter response in the full 51-parameter sensitivity analysis. This result has a direct managerial implication: improving near-miss reporting and incident prevention is the highest-leverage safety investment a mine manager can make to improve the mine's CMEM score. The sensitivity of MCI to near-miss count reflects the combined influence of:
+**Near-Miss Count** (Rank 1, swing = 7.6 pts) is the most influential parameter in the entire model. A 20% increase in near-miss incidents per year produces a 3.8-point MCI reduction — the largest single-parameter response in the full 51-parameter sensitivity analysis. This result has a direct managerial implication: improving near-miss reporting and incident prevention is the highest-leverage safety investment a mine manager can make to improve the mine's MCIF score. The sensitivity of MCI to near-miss count reflects the combined influence of:
 - Near-miss score directly contributing 8% of the hazard component in Risk dimension
 - Risk dimension's high ensemble weight of 26.7%
 - The compound effect through the Heinrich ratio embedded in the scoring function
@@ -1249,9 +1249,9 @@ Sensitivity analysis was conducted using Rajmahal OCP as the base case (the appl
 | Environmental | **5.8** | EC Status, GHG Intensity | 10.4% |
 | Governance | **3.9** | DGMS Compliance, ESG Score | 7.0% |
 
-Risk and Economic dimensions together account for **60.1%** of total MCI sensitivity across all 51 parameters — strongly validating the CMEM's weight structure. Safety quality and financial performance are the dominant value drivers in Indian OC coal mining, and the CMEM's ensemble weights (26.7% and 17.0% respectively) correctly reflect this reality.
+Risk and Economic dimensions together account for **60.1%** of total MCI sensitivity across all 51 parameters — strongly validating the MCIF's weight structure. Safety quality and financial performance are the dominant value drivers in Indian OC coal mining, and the MCIF's ensemble weights (26.7% and 17.0% respectively) correctly reflect this reality.
 
-> **[Figure 6.6 — Stacked or grouped bar chart: dimension-level total |ΔMCI| aggregated from OAT analysis. Insert from CMEM Sensitivity page dimension aggregation panel.]**
+> **[Figure 6.6 — Stacked or grouped bar chart: dimension-level total |ΔMCI| aggregated from OAT analysis. Insert from MCIF Sensitivity page dimension aggregation panel.]**
 
 ### 6.3.3 Subtopic-Level Sensitivity
 
@@ -1266,15 +1266,15 @@ Of the top 10 most sensitive parameters, **6 are subtopic parameters** — param
 | Blended GCV | Coal Quality | 9 |
 | Payback Period | (feeds HEMM Cost subtopic indirectly) | 10 |
 
-This finding validates the design decision to include engineering subtopics in the CMEM: the most operationally actionable parameters — those that mine engineers can directly influence through equipment management, blast design, and infrastructure investment — are disproportionately represented among the highest-sensitivity parameters.
+This finding validates the design decision to include engineering subtopics in the MCIF: the most operationally actionable parameters — those that mine engineers can directly influence through equipment management, blast design, and infrastructure investment — are disproportionately represented among the highest-sensitivity parameters.
 
 ## 6.4 Comparison with the Preliminary Reference Scoring Model
 
-The PDF reference document (*"Opencast Core Factor"*) presents a preliminary 6-dimension scoring model with expert-assigned fixed weights (Technical 25%, Economic 30%, Environmental 10%, Social 15%, Geographical 10%, Risk 10%) — representing the pre-CMEM baseline against which the present work's improvements are assessed.
+The PDF reference document (*"Opencast Core Factor"*) presents a preliminary 6-dimension scoring model with expert-assigned fixed weights (Technical 25%, Economic 30%, Environmental 10%, Social 15%, Geographical 10%, Risk 10%) — representing the pre-MCIF baseline against which the present work's improvements are assessed.
 
-### Table 6.9: CMEM v3.0 versus Preliminary Reference Model
+### Table 6.9: MCIF v3.0 versus Preliminary Reference Model
 
-| Evaluation Criterion | Preliminary Model | **CMEM v3.0** | Improvement |
+| Evaluation Criterion | Preliminary Model | **MCIF v3.0** | Improvement |
 |---------------------|:-----------------:|:-------------:|:----------:|
 | Number of dimensions | 6 | **7** | +1 (Governance) |
 | Weight derivation method | Fixed expert assignment | **Ensemble (AHP+EWM+CRITIC)** | Objective |
@@ -1288,9 +1288,9 @@ The PDF reference document (*"Opencast Core Factor"*) presents a preliminary 6-d
 | CIMVAL valuation integration | Not present | **Automated selection** | Added |
 | Applicable to Australian mines | Not tested | **Validated on 2 AU mines** | Tested |
 
-> **[Figure 6.7 — Side-by-side weight comparison bar chart: Preliminary Model (6 dimensions, fixed weights) vs. CMEM v3.0 (7 dimensions, ensemble weights). Highlight the Risk weight change (10% → 26.7%). Insert from CMEM Workflow page.]**
+> **[Figure 6.7 — Side-by-side weight comparison bar chart: Preliminary Model (6 dimensions, fixed weights) vs. MCIF v3.0 (7 dimensions, ensemble weights). Highlight the Risk weight change (10% → 26.7%). Insert from MCIF Workflow page.]**
 
-The most significant departure is the **Risk dimension weight** (10% → 26.7%). In the preliminary model, Risk at 10% is effectively subordinated to Economics (30%) and Technical (25%). In the CMEM, the entropy-based analysis reveals that safety performance metrics — LTIFR, near-miss counts, DGMS compliance scores — exhibit the highest empirical variance across Indian OC coal mines, meaning that safety quality is the factor that best discriminates between good and poor mines. Assigning it the highest ensemble weight (26.7%) is therefore both mathematically justified and operationally meaningful.
+The most significant departure is the **Risk dimension weight** (10% → 26.7%). In the preliminary model, Risk at 10% is effectively subordinated to Economics (30%) and Technical (25%). In the MCIF, the entropy-based analysis reveals that safety performance metrics — LTIFR, near-miss counts, DGMS compliance scores — exhibit the highest empirical variance across Indian OC coal mines, meaning that safety quality is the factor that best discriminates between good and poor mines. Assigning it the highest ensemble weight (26.7%) is therefore both mathematically justified and operationally meaningful.
 
 The second major departure is the **downweighting of Economics** from 30% to 17.0%. This does not imply that economics matters less; it reflects the CRITIC method's finding that Economic and Technical dimensions are partially correlated (through OSR, BESR, and production scale), and that the Economic dimension's discriminating power is partly shared with the Technical dimension. Reducing the Economic weight to 17% prevents double-counting of correlated information while preserving its rank as the second most important dimension.
 
@@ -1333,21 +1333,21 @@ The reframing of Risk from a penalty term to a positive Safety Quality dimension
 
 **The conventional approach:** In prior MCDA models for mining [3, 4, 6], risk is typically handled as a multiplicative penalty factor (Score_final = Score_MCDA × (1 − Risk_factor)) or a negative additive term. This creates mathematical instabilities: when Risk_factor is large (highly hazardous mine), the penalty interacts non-linearly with the base score, making it difficult to attribute MCI changes to specific causal factors. It also creates a logical asymmetry — operational excellence in risk management can at best reduce the penalty to zero; it cannot actively increase the composite score.
 
-**The CMEM approach:** Safety Quality = 100 − Hazard Level is scored as a dimension with a positive ensemble weight of 26.7%. A mine with β = 3.5, LTIFR = 3.2, zero near-misses, and 95% DGMS compliance earns a Risk score of approximately 82 — directly contributing +21.9 points to the MCI (82 × 0.267). This positive contribution rewards operational safety excellence with the same mathematical clarity as financial or technical performance.
+**The MCIF approach:** Safety Quality = 100 − Hazard Level is scored as a dimension with a positive ensemble weight of 26.7%. A mine with β = 3.5, LTIFR = 3.2, zero near-misses, and 95% DGMS compliance earns a Risk score of approximately 82 — directly contributing +21.9 points to the MCI (82 × 0.267). This positive contribution rewards operational safety excellence with the same mathematical clarity as financial or technical performance.
 
-**Empirical validation:** The sensitivity analysis confirms this framing's validity — the Risk dimension parameters (near-miss count, slope FoS, POF) collectively account for 32.9% of total MCI sensitivity, more than any other dimension. If Risk were applied as a penalty, its numerical influence on MCI would be similar in magnitude but the directional interpretation would be inverted — operationally identical mines would be ranked differently depending on whether the analyst chose a penalty or positive-quality formulation. The CMEM's positive formulation is therefore not merely a cosmetic change but a substantive design choice that ensures consistent interpretation across all mine evaluations.
+**Empirical validation:** The sensitivity analysis confirms this framing's validity — the Risk dimension parameters (near-miss count, slope FoS, POF) collectively account for 32.9% of total MCI sensitivity, more than any other dimension. If Risk were applied as a penalty, its numerical influence on MCI would be similar in magnitude but the directional interpretation would be inverted — operationally identical mines would be ranked differently depending on whether the analyst chose a penalty or positive-quality formulation. The MCIF's positive formulation is therefore not merely a cosmetic change but a substantive design choice that ensures consistent interpretation across all mine evaluations.
 
 ## 7.3 Governance as the 7th Dimension — Industry Contribution
 
-The Governance dimension (added in CMEM v3.0) captures a growing reality in global mining finance: ISO certification status and ESG disclosure quality are increasingly non-negotiable requirements for international institutional investors, multilateral development finance (IFC, ADB), and ESG-rated bond markets.
+The Governance dimension (added in MCIF v3.0) captures a growing reality in global mining finance: ISO certification status and ESG disclosure quality are increasingly non-negotiable requirements for international institutional investors, multilateral development finance (IFC, ADB), and ESG-rated bond markets.
 
 **Evidence from the dataset:** The Governance gap between Indian and Australian mines (mean 46.6 vs 80.5 — a 41.1-point gap, the largest of all dimensions) demonstrates that governance quality is the most differentiated dimension in the cross-country comparison. The EWM assigns Governance a weight of 9.8% — substantially higher than the AHP expert weight of 3.5% — because ISO certification status is the most variable parameter in the training set (ranging from "Not Started" to "In Progress" to "Certified"). The ensemble's compromise at 6.6% balances expert judgment with data evidence.
 
-**Policy implication:** The CMEM Governance dimension scoring provides CIL subsidiaries with a quantitative target: each ISO 45001 certification upgrade (Not Started → In Progress → Certified) translates to an increase in the Governance sub-factor score from 10 to 55 to 100 — a potential improvement of 90 points in s_ISO45001, worth 0.25 × 90 × 0.066 × 0.87 ≈ **+1.30 MCI points** from the ISO 45001 sub-factor alone. The full Governance dimension improvement potential for an Indian mine moving from Grade F (Governance score 35) to Grade B (score 70) is +35 × 0.066 × 0.87 ≈ **+2.0 MCI points**.
+**Policy implication:** The MCIF Governance dimension scoring provides CIL subsidiaries with a quantitative target: each ISO 45001 certification upgrade (Not Started → In Progress → Certified) translates to an increase in the Governance sub-factor score from 10 to 55 to 100 — a potential improvement of 90 points in s_ISO45001, worth 0.25 × 90 × 0.066 × 0.87 ≈ **+1.30 MCI points** from the ISO 45001 sub-factor alone. The full Governance dimension improvement potential for an Indian mine moving from Grade F (Governance score 35) to Grade B (score 70) is +35 × 0.066 × 0.87 ≈ **+2.0 MCI points**.
 
 ## 7.4 Full-Stack Web Application — Deployment Contribution
 
-The CMEM's deployment as a production-quality web application addresses the most common failure mode of academic mine evaluation models: they exist as published papers but are never operationally accessible to practitioners. The present application provides:
+The MCIF's deployment as a production-quality web application addresses the most common failure mode of academic mine evaluation models: they exist as published papers but are never operationally accessible to practitioners. The present application provides:
 
 1. **Real-time evaluation** (< 100 ms response time for all 150+ parameters)
 2. **OAT sensitivity analysis** (51 parameters, 3 perturbation levels, tornado chart visualisation)
@@ -1364,7 +1364,7 @@ The combination of a validated analytical model with a production-quality softwa
 
 ## 8.1 Expanded Training Dataset
 
-The CMEM v3.0 is calibrated on 12 mines (8 training, 4 validation). While the validation metrics are satisfactory (MAE = 2.53 pts, R² = 0.91), the model's generalisability would be substantially strengthened by expanding the dataset to 30–50 mines across a broader range of CIL subsidiaries, geological provinces, and production scales. Priority areas for data collection include:
+The MCIF v3.0 is calibrated on 12 mines (8 training, 4 validation). While the validation metrics are satisfactory (MAE = 2.53 pts, R² = 0.91), the model's generalisability would be substantially strengthened by expanding the dataset to 30–50 mines across a broader range of CIL subsidiaries, geological provinces, and production scales. Priority areas for data collection include:
 
 - **Western Coalfields Limited (WCL) mines** in Maharashtra — not yet represented in the training set
 - **Mahanadi Coalfields Limited (MCL) mines** in Odisha — large-scale operations with distinct geological characteristics
@@ -1375,9 +1375,9 @@ With a larger dataset, the calibration factor (currently CF = 0.87, derived as a
 
 ## 8.2 Machine Learning Integration — Hybrid Analytical-ML Architecture
 
-The current CMEM uses analytical (formula-based) scoring functions. A future hybrid architecture could integrate supervised machine learning at the dimension-score prediction level:
+The current MCIF uses analytical (formula-based) scoring functions. A future hybrid architecture could integrate supervised machine learning at the dimension-score prediction level:
 
-- **Phase 1 (current — CMEM v3.0):** Analytical model → fully interpretable, auditable, deployable with 12 mines
+- **Phase 1 (current — MCIF v3.0):** Analytical model → fully interpretable, auditable, deployable with 12 mines
 - **Phase 2 (proposed):** Collect 50+ mine dataset → train XGBoost / Random Forest models to predict each dimension score from raw parameters → compare ML predictions against analytical formula scores → adopt ML predictions where RMSE(ML) < RMSE(analytical)
 - **Phase 3 (long-term):** Integrate SHAP (SHapley Additive exPlanations) values from the ML model to maintain interpretability, replacing the current fixed sub-factor weight tables with data-derived feature importance rankings
 
@@ -1398,7 +1398,7 @@ Currently, all 150+ parameters are manually entered by the user. Future integrat
 
 ## 8.4 Underground Mine Extension
 
-The current CMEM is calibrated exclusively for producing-stage opencast coal mines. Extension to underground mines — covering Board & Pillar, Longwall, and Continuous Mining methods — would require:
+The current MCIF is calibrated exclusively for producing-stage opencast coal mines. Extension to underground mines — covering Board & Pillar, Longwall, and Continuous Mining methods — would require:
 
 1. **Replacement of HEMM parameters** with continuous miner, shuttle car, and LHD specifications
 2. **Modified stripping ratio logic**: BESR is replaced by depth-at-crossover analysis (the depth below which underground extraction is more economical than opencast)
@@ -1408,7 +1408,7 @@ The current CMEM is calibrated exclusively for producing-stage opencast coal min
 
 ## 8.5 Dynamic and Probabilistic MCI
 
-The CMEM currently provides a **static snapshot** evaluation — a single MCI for a given parameter set at a given point in time. Future extensions should address:
+The MCIF currently provides a **static snapshot** evaluation — a single MCI for a given parameter set at a given point in time. Future extensions should address:
 
 - **Monte Carlo simulation**: Propagate uncertainty in key parameters (OSR, GCV, coal price, LTIFR) through the MCI computation to generate a probability distribution of MCI rather than a deterministic point estimate. This would directly support the CIMVAL P10/P50/P90 scenario DCF counter-condition.
 - **Time-series MCI tracking**: Quarter-by-quarter MCI trajectory as the mine advances (deepening working levels, reserve depletion, equipment ageing, regulatory changes) — enabling the model to function as an ongoing mine health monitoring tool rather than a one-time investment assessment.
@@ -1418,21 +1418,21 @@ The CMEM currently provides a **static snapshot** evaluation — a single MCI fo
 
 # CHAPTER 9: CONCLUSIONS
 
-This thesis presents the **Composite Mine Evaluation Model (CMEM) v3.0** — a comprehensive, analytical, validated, and deployable multi-criteria decision framework for the evaluation of producing-stage opencast coal mines. The work makes six principal contributions to the field of mine evaluation and decision support:
+This thesis presents the **Composite Mine Evaluation Model (MCIF) v3.0** — a comprehensive, analytical, validated, and deployable multi-criteria decision framework for the evaluation of producing-stage opencast coal mines. The work makes six principal contributions to the field of mine evaluation and decision support:
 
-**Contribution 1 — Ensemble Weight Derivation:** No prior Indian mine evaluation framework has combined multiple complementary weight-derivation procedures (AHP, Entropy Weight Method, and CRITIC) into a single ensemble. The CMEM derives dimension weights as a weighted combination (50% AHP + 30% EWM + 20% CRITIC), producing a robust weight vector in which all three methods independently agree on the ordinal ranking: Risk (Safety Quality, 26.7%) > Economic (17.0%) > Social (13.9%) > Geographical (13.0%) > Technical (12.7%) > Environmental (10.1%) > Governance (6.6%). The leave-one-method-out analysis confirms that each component method contributes incrementally to prediction accuracy; the ensemble achieves an MAE of 2.53 pts that no single method can match.
+**Contribution 1 — Ensemble Weight Derivation:** No prior Indian mine evaluation framework has combined multiple complementary weight-derivation procedures (AHP, Entropy Weight Method, and CRITIC) into a single ensemble. The MCIF derives dimension weights as a weighted combination (50% AHP + 30% EWM + 20% CRITIC), producing a robust weight vector in which all three methods independently agree on the ordinal ranking: Risk (Safety Quality, 26.7%) > Economic (17.0%) > Social (13.9%) > Geographical (13.0%) > Technical (12.7%) > Environmental (10.1%) > Governance (6.6%). The leave-one-method-out analysis confirms that each component method contributes incrementally to prediction accuracy; the ensemble achieves an MAE of 2.53 pts that no single method can match.
 
-**Contribution 2 — Risk as Safety Quality:** The CMEM reframes the Risk dimension from a conventional penalty term into a positive Safety Quality score (S_Risk = 100 − Hazard), applied with the highest ensemble weight (26.7%). This framing rewards operational safety excellence directly — a mine with β = 3.5, LTIFR = 3.2, and zero near-misses earns approximately 82 points on the Risk dimension, contributing +21.9 MCI points. The sensitivity analysis confirms that Risk dimension parameters collectively account for 32.9% of total MCI sensitivity — validating the high weight both mathematically and operationally.
+**Contribution 2 — Risk as Safety Quality:** The MCIF reframes the Risk dimension from a conventional penalty term into a positive Safety Quality score (S_Risk = 100 − Hazard), applied with the highest ensemble weight (26.7%). This framing rewards operational safety excellence directly — a mine with β = 3.5, LTIFR = 3.2, and zero near-misses earns approximately 82 points on the Risk dimension, contributing +21.9 MCI points. The sensitivity analysis confirms that Risk dimension parameters collectively account for 32.9% of total MCI sensitivity — validating the high weight both mathematically and operationally.
 
-**Contribution 3 — Governance as 7th Dimension:** CMEM v3.0 introduces Governance as a dedicated 7th dimension, capturing ISO 14001/45001 certification status, DGMS audit compliance, ESG disclosure quality, regulatory violations, and critical audit findings. The cross-country comparison reveals a 41.1-point governance gap between Indian CIL subsidiary mines (mean 46.6) and Australian mines (mean 80.5) — the largest gap of all seven dimensions — quantifying the governance deficit that constrains Indian coal mines' access to international capital markets.
+**Contribution 3 — Governance as 7th Dimension:** MCIF v3.0 introduces Governance as a dedicated 7th dimension, capturing ISO 14001/45001 certification status, DGMS audit compliance, ESG disclosure quality, regulatory violations, and critical audit findings. The cross-country comparison reveals a 41.1-point governance gap between Indian CIL subsidiary mines (mean 46.6) and Australian mines (mean 80.5) — the largest gap of all seven dimensions — quantifying the governance deficit that constrains Indian coal mines' access to international capital markets.
 
-**Contribution 4 — Model Validation with Published Error Metrics:** The CMEM is validated against four held-out mines (two Indian NCL mines, two Australian Queensland mines) with fully transparent error reporting. The model achieves MAE = 2.53 points and R² = 0.91, both within target thresholds (MAE ≤ 5.0 pts, R² ≥ 0.85), and correctly classifies all four validation mines by grade. This represents the first published validation of a composite mine evaluation index for Indian OC coal mines against independently assessed actual scores.
+**Contribution 4 — Model Validation with Published Error Metrics:** The MCIF is validated against four held-out mines (two Indian NCL mines, two Australian Queensland mines) with fully transparent error reporting. The model achieves MAE = 2.53 points and R² = 0.91, both within target thresholds (MAE ≤ 5.0 pts, R² ≥ 0.85), and correctly classifies all four validation mines by grade. This represents the first published validation of a composite mine evaluation index for Indian OC coal mines against independently assessed actual scores.
 
 **Contribution 5 — Engineering Subtopic Diagnostics:** Seven engineering subtopic composite scores (Mine Life, HEMM & Cost, Stripping Ratio, Coal Quality, Bench & Blast, Dewatering, Infrastructure) provide operational-level diagnostic information beyond the seven dimension scores. Of the top 10 most sensitive parameters identified by OAT analysis, six are subtopic parameters — confirming that engineering-level operational variables are the most actionable levers for MCI improvement. Infrastructure & Logistics is identified as the highest-effective-weight subtopic (8.6%), while Coal Quality is the most cross-dimensional (feeding Technical, Environmental, and Risk dimensions simultaneously).
 
-**Contribution 6 — Full-Stack Decision-Support Platform:** The CMEM is deployed as a production-quality web application (Next.js frontend + Node.js backend + MongoDB) providing real-time evaluation, OAT sensitivity analysis with tornado chart visualisation, historical record management with re-evaluation capability, and PDF report export. This deployment makes the CMEM immediately accessible to mine planners, investment analysts, and regulatory evaluators without requiring specialist MCDA knowledge.
+**Contribution 6 — Full-Stack Decision-Support Platform:** The MCIF is deployed as a production-quality web application (Next.js frontend + Node.js backend + MongoDB) providing real-time evaluation, OAT sensitivity analysis with tornado chart visualisation, historical record management with re-evaluation capability, and PDF report export. This deployment makes the MCIF immediately accessible to mine planners, investment analysts, and regulatory evaluators without requiring specialist MCDA knowledge.
 
-**Overall Assessment:** The CMEM v3.0 provides the Indian mining industry with a rigorous, transparent, and deployable framework for mine evaluation that is both academically grounded and operationally practical. Its calibration factor (CF = 0.87) — transparently disclosed — acknowledges that analytical scoring functions cannot fully capture qualitative governance shortfalls and community relations quality, pointing toward future machine learning integration as the path to further reducing prediction error.
+**Overall Assessment:** The MCIF v3.0 provides the Indian mining industry with a rigorous, transparent, and deployable framework for mine evaluation that is both academically grounded and operationally practical. Its calibration factor (CF = 0.87) — transparently disclosed — acknowledges that analytical scoring functions cannot fully capture qualitative governance shortfalls and community relations quality, pointing toward future machine learning integration as the path to further reducing prediction error.
 
 The validated weight structure — with safety at 26.7% and economics at 17.0% — delivers a clear policy message to Indian coal mine operators: **improving safety management quality is not merely a regulatory obligation but the single highest-impact lever for enhancing mine investment grade**. Investment in near-miss reporting culture, geotechnical monitoring, ISO 45001 certification, and DGMS compliance improvement collectively offers a higher MCI return per rupee invested than any equivalent investment in financial engineering or technical productivity enhancement.
 
@@ -1496,7 +1496,7 @@ The validated weight structure — with safety at 26.7% and economics at 17.0% �
 
 ---
 
-**Appendix A: CMEM v3.0 Scoring Function Summary & Parameter Reference**
+**Appendix A: MCIF v3.0 Scoring Function Summary & Parameter Reference**
 
 All 7 dimension scoring functions as implemented in `scoring.js`:
 
@@ -1747,7 +1747,7 @@ The application also exposes a number of subtopic sections (mine life, HEMM, SR,
 
 **Appendix B: Weight Derivation Methods (Technical Details)**
 
-This appendix documents the technical procedures used to derive dimension and parameter weights in the CMEM ensemble approach. The main manuscript avoids naming these procedures to keep the narrative accessible; here we provide mathematical descriptions, assumptions, and implementation notes to ensure reproducibility.
+This appendix documents the technical procedures used to derive dimension and parameter weights in the MCIF ensemble approach. The main manuscript avoids naming these procedures to keep the narrative accessible; here we provide mathematical descriptions, assumptions, and implementation notes to ensure reproducibility.
 
 **Procedure 1: Pairwise-based method** — derives weights via pairwise expert comparisons and priority vector extraction using the principal eigenvector method. For a pairwise comparison matrix $A$ (size $n\times n$) where $a_{ij}$ is the relative importance of criterion $i$ over $j$, the priority vector $w$ is computed as the normalized principal eigenvector of $A$:
 
@@ -1767,7 +1767,7 @@ $$C_j = \sigma_j \sum_k (1 - r_{jk})$$
 
 and weights are normalized $w_j = C_j / \sum_j C_j$.
 
-**Ensemble procedure used in CMEM v3.0**
+**Ensemble procedure used in MCIF v3.0**
 
 1. Compute weights independently using the three procedures above (pairwise-based, entropy-based, correlation-contrast) at the dimension level and at select sub-topic levels where appropriate.
 2. Standardize each method's weights to sum to 1 and check for extreme values; apply winsorization at the 1st/99th percentiles if necessary to limit outlier influence.
@@ -1793,7 +1793,7 @@ Implementation notes:
 | ODM | Mongoose | 8.x |
 | Deployment | Local (localhost:3000 / :8000) | — |
 
-**Appendix D: CMEM v3.0 Ensemble Weight Derivation — Complete Pairwise Matrix**
+**Appendix D: MCIF v3.0 Ensemble Weight Derivation — Complete Pairwise Matrix**
 
 AHP Pairwise Comparison Matrix (7×7) — v3.0:
 
@@ -1813,7 +1813,7 @@ AHP Pairwise Comparison Matrix (7×7) — v3.0:
 
 # APPENDIX E: OPENCAST MINE EVALUATION FACTOR TABLES (Source Document)
 
-This appendix reproduces all parameter tables from the reference document *"Opencast Core Factor"* in full. Each row specifies the parameter **Type**, the **Formula or unit**, the recommended **Method**, the **Condition** under which that method is applicable, and the **Fallback** procedure when the primary condition is not met. These tables informed the design of CMEM's 150+ parameter input specification.
+This appendix reproduces all parameter tables from the reference document *"Opencast Core Factor"* in full. Each row specifies the parameter **Type**, the **Formula or unit**, the recommended **Method**, the **Condition** under which that method is applicable, and the **Fallback** procedure when the primary condition is not met. These tables informed the design of MCIF's 150+ parameter input specification.
 
 ---
 
@@ -2091,11 +2091,11 @@ This appendix reproduces all parameter tables from the reference document *"Open
 
 ## E.2 Reference Model — Preliminary Category Weights
 
-The following table shows the preliminary (pre-CMEM) scoring model category weights from the source document. CMEM v3.0 departs from these fixed expert weights through ensemble weight derivation.
+The following table shows the preliminary (pre-MCIF) scoring model category weights from the source document. MCIF v3.0 departs from these fixed expert weights through ensemble weight derivation.
 
 #### Table E.2: Preliminary Scoring Model Category Weights
 
-| Category | Preliminary Weight (%) | CMEM v3.0 Ensemble Weight (%) | Change |
+| Category | Preliminary Weight (%) | MCIF v3.0 Ensemble Weight (%) | Change |
 |----------|----------------------|------------------------------|--------|
 | Technical | 25 | 12.7 | −12.3 pp |
 | Economic | 30 | 17.0 | −13.0 pp |
@@ -2245,11 +2245,11 @@ Key insight: The most significant reweighting is Risk (10% → 26.7%), driven by
 
 ---
 
-## E.4 Cross-Reference: Source Document vs CMEM v3.0
+## E.4 Cross-Reference: Source Document vs MCIF v3.0
 
-The following table maps each source document section to its CMEM v3.0 implementation.
+The following table maps each source document section to its MCIF v3.0 implementation.
 
-| Source Section | CMEM Implementation |
+| Source Section | MCIF Implementation |
 |---------------|---------------------|
 | Economic (18 params) | `scoreEconomic()` in scoring.js; `npv_cr`, `irr_pct`, `wacc_pct`, `besr`, etc. |
 | Technical (14 params) | `scoreTechnical()` in scoring.js; ISR/OSR, HEMM, FoS, recovery, blast |
@@ -2270,4 +2270,4 @@ The following table maps each source document section to its CMEM v3.0 implement
 ---
 
 *IIT Kharagpur · Department of Mining Engineering · M.Tech Thesis 2026*
-*Mine Competitive Index Framework (CMEM) v3.0 — Vinod Kumar Maurya*
+*Mine Competitive Index Framework (MCIF) v3.0 — Vinod Kumar Maurya*
